@@ -1,0 +1,179 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+body
+{
+    font-family: <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">;
+}
+.container
+{
+   background-color: rgba(255, 255, 255, 0.897);
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+.firstline
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 3px;
+    padding-top: 3rem ;
+    padding-bottom: 2rem;
+    text-align: center;
+    z-index: 1;
+}
+.secondline
+{   padding: 1rem 25rem 1rem 25rem;;
+    text-align: center;
+    font-size: large;
+}
+.star-row
+{
+    display: flex;
+    background-color: rgb(227, 222, 228);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+    border-top-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    box-shadow: 0px 0.5px 15px rgb(158, 153, 160)    
+}
+.star-text
+{
+    color: rgb(104, 63, 143);
+    font-weight: 400;
+    text-shadow: 3px;
+    padding-top: 1rem;
+}
+.star-symbol img
+{
+   width: 25px;
+}
+.comments
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.comments .card:not(:first-child)
+{
+    margin-left: 1rem;
+}
+.card
+{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+   justify-content: flex-start;
+   height: 300px;
+   width: 400px;
+    padding: 2rem;
+    background-color: rgb(83, 44, 119);
+    box-sizing: border-box;
+    border-radius: 2rem;
+    
+}
+.id-card
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.id-pic img
+    {
+        width: 4rem;
+        border-radius: 50%;
+        margin-right: 3rem;
+        border: 1px white;
+    }
+.name-info
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+    .name
+    {
+       color: aliceblue;
+       font-weight: 400;
+       font-size: 1.5rem;
+       line-height: 30px;
+    }
+    
+    .name-info .extra-info
+    {
+        color: white;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 30px;
+      align-self: flex-start;
+    }
+    .extra-info .span
+    {
+        color: #c6ab51;
+      padding-left: 5px;
+     
+    }
+.user-comment::before
+{
+    content: "//";
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    font-style: italic;
+    font-weight:600 ;
+    
+
+}    
+.user-comment
+{
+    color: #e7cee7;
+    font-size: 1rem;
+     line-height: 25px;
+     font-weight: 500;
+    padding: 10px;
+    text-indent: 15px;
+     position: relative;
+}
+.container2
+{
+    padding-top: 1rem;
+    background-color: rgb(230, 170, 81);
+    height: 6rem;
+    color: black;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.news
+{
+    
+   font-size: x-large;
+    
+}
+.text
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.button
+{
+  height: 1rem;
+   cursor: pointer;
+   box-sizing: content-box;
+}
+
+
+   

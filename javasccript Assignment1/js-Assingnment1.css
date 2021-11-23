@@ -1,0 +1,105 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    margin: 2.5rem;
+}
+
+.phones
+{
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(245, 222, 14); */
+    width: 63rem;
+}
+.card
+{
+    display: flex;
+    flex-direction: row;
+    /* background-color: blueviolet; */
+    margin: 2rem;
+    margin-left: 3rem;
+   margin-top: 1rem;
+}
+.checkbox
+{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.pic img
+{
+    height: 13rem;
+    width: 6rem;
+    
+}
+
+.name-desc
+{
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(236, 43, 204); */
+    margin-top: 10px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.name
+{
+    font-weight: 600;
+    font-size: larger;
+    margin-bottom: 1rem;
+}
+.desc
+{
+    /* background-color: rosybrown; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 1.5rem;
+    margin-right: 1rem;
+    padding-right: 25rem;
+    
+}
+.product-price
+{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    
+  position: absolute;
+}
+.price
+{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-top: 8px;
+    margin-left: 45rem;
+}
+
+.cart
+{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    margin-left: 4rem;
+    align-content: center;
+    justify-content: flex-start;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.display
+{
+    margin: 2rem;
+    justify-content: center;
+}

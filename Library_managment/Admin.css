@@ -50,6 +50,7 @@ body
     text-align: center;
     cursor: pointer;
 }
+
 .buttonRow .button:not(:first-child)
 {
     margin-left: 10px;
@@ -68,8 +69,7 @@ body
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem ;
-    
-    
+   
 }
 h1
 {
@@ -77,24 +77,109 @@ h1
     justify-content: center;
 
 }
-.inputSpace
+.addBook .inputSpace
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
- label{
+ .addBook label{
     display: inline-block;
     float: left; 
     width: 100px;
     text-align: right;
     margin-bottom: 1rem;
+    margin-right: 10px;
 }
 .add
 {
   display: inline;
   float: right;
-  width: 10rem;
+  width: 8rem;
+  text-align: center;
 }
 
+.updateBook
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.updateBookF
+{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    margin: 10px auto;
+}
+.search
+{
+    width: 5rem;
+    height: 1.5rem;
+    margin: 1rem auto;
+}
+.deleteBook
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.deleteBookF
+{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    margin: 10px auto;
+}
+.delete
+{
+    width: 5rem;
+    height: 1.5rem;
+    margin: 1rem auto;
+}
+.searchBook
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.searchBookF
+{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    margin: 10px auto;
+}
+
+.viewOrders
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.viewOrdersF
+{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin: 10px auto;
+}
+.viewOrdersF label
+{
+    display: inline;
+    float: left;
+    justify-content: left;
+    width: 100;
+}
+.viewOrdersF .inputSpace
+{
+    display: inline;
+    float: right;
+    justify-content: right;
+    margin: 5px 8px ;
+}

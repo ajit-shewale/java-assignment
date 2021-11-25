@@ -1,0 +1,75 @@
+*
+{
+    margin: 0%;
+    padding: 0;
+}
+body
+{
+    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ;
+   font-family: <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Fredericka+the+Great&family=Montserrat&display=swap" rel="stylesheet"> ;
+    background-size: cover;
+    
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+.library
+{
+    text-align: center;
+   margin: 2rem;
+   font-size: 4rem;
+   color: blanchedalmond;
+  
+}
+.signInBlock
+{
+    display: flex;
+    flex-direction: column;
+   background-color: rgba(245, 245, 220, 0.842);
+    box-sizing: border-box;
+    height: 23rem;
+    width: 28rem;
+    margin: 3rem auto 5rem auto;
+    line-height: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
+    padding-top: 3rem;
+    font-size: 1.5rem;
+    
+}
+label
+{
+    font-weight: bold;
+}
+
+.inputSpace
+{   display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 15rem;
+    height: 1.5rem;
+    font-size: medium;
+    border: transparent;
+}
+
+input
+{
+    background-color: transparent;
+    border: 0em;
+}
+.signIn
+{
+    text-align: center;
+    box-sizing: border-box;
+    width: 5rem;
+    height: 2.3rem;
+    padding: 2px 3px;
+    margin: 1rem auto;
+}
+  

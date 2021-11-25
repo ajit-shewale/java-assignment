@@ -1,0 +1,56 @@
+*
+{
+    margin: 0%;
+    padding: 0%;
+}
+body
+{
+    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ;
+    background-size: cover;
+}
+.student
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 3rem;
+    margin: 15px;
+    text-align: center;
+    color: blanchedalmond;
+}
+.container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    background-color: rgb(236, 238, 223);
+    width: 70rem;
+    height: 30rem;
+    margin: 5rem auto;
+    padding: 25px;
+}
+
+.buttonRow
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+   
+   
+}
+.button
+{   
+    height: 2.5rem;
+    width: 35rem;
+    background-color: rgba(255, 111, 111, 0.993);
+   border: 0px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+.buttonRow .button:not(:first-child)
+{
+    margin-left: 10px;
+}

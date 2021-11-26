@@ -54,3 +54,110 @@ body
 {
     margin-left: 10px;
 }
+.allBooks
+{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem auto;
+}
+.heading
+{
+    align-self: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.searchBook
+{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    margin: 1rem auto;  
+}
+.searchBook label
+{
+    margin: 1rem 25rem;
+    margin-bottom: 3rem;
+}
+.search
+{
+    margin: 1rem;
+    width: 4rem;
+    align-self: center;
+}
+
+.placeOrder
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem auto;
+}
+.placeOrderF
+{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-self: center;
+   
+}
+.placeOrderF .inputSpace
+{
+   margin: 1rem;
+}
+.placeOrderButton
+{
+    width: 7rem;
+    align-self: center;
+}
+
+.returnBook
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.returnBookF
+{
+    display: flex;
+    flex-direction: column;
+}
+.returnBook label
+{
+    display: inline-block;
+    float: center;
+    margin: 0.5rem auto;
+}
+.return
+{
+    width: 5rem;
+    align-self: center;
+}
+.issuedBook
+{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.issuedBookF
+{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.issuedBookF label
+{
+    margin: 5px 30rem;
+    justify-self: center;
+    
+}
+
+
+
+
+
+
+
+

@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin</title>
     <link rel="stylesheet" href="Admin.css">
+    <script src="Admin.js"></script>
 </head>
 <body>
     <div class="admin">Admin</div>
     <div class="container">
         <div class="buttonRow">
-            <button class="button" type="submit">Add Book</button>
-            <button class="button" type="submit">Update Book</button>
-            <button class="button" type="submit">Delete Book</button>
-            <button class="button" type="submit">Search Book</button>
-            <button class="button" type="submit">View Orders</button>
-            <button class="button" type="submit">Log Out</button>
+            <button class="button" type="submit" onclick="addBook()">Add Book</button>
+            <button class="button" type="submit" onclick="updateBook()">Update Book</button>
+            <button class="button" type="submit" onclick="deleteBook()">Delete Book</button>
+            <button class="button" type="submit" onclick="searchBook()">Search Book</button>
+            <button class="button" type="submit" onclick="viewOrders()">View Orders</button>
+            <button class="button" type="submit" onclick="document.location='index.html' ">Log Out</button>
         </div>
 
         <div class=optionDisplay>
-            <!-- <div class="addBook">
+           
+            <div id="addBook" >
                 <h1 class="heading"><u>Add Book</u></h1>
                 <form action="" class="addBookF">
                     <label for="bookId">Book Id : </label>
@@ -35,33 +37,33 @@
                     <input type="number" name="quantity" id="quantity" class="inputSpace"><br>
                 </form>
                 <button class="add">Add</button>
-            </div> -->
-            <!-- <div class="updateBook">
-                <h1 class="heading"><u>Book Search</u></h1>
+            </div>
+            <div id="updateBook">
+                <h1 class="heading"><u>Update Search</u></h1>
                 <form action="" class="updateBookF">
                     <label for="bookId">Book Id : <input type="number" id="bookId" class="inputSpace"></label>
                 </form>
                 <button class="search">Search</button>
-            </div> -->
+            </div>
 
 
-            <!-- <div class="deleteBook">
+            <div id="deleteBook">
                 <h1 class="heading"><u>Delete Book</u></h1>
                 <form action="" class="deleteBookF">
                     <label for="bookId">Book Id : <input type="number" id="bookId" class="inputSpace"></label>
                 </form>
                 <button class="delete">Delete</button>
-            </div> -->
+            </div>
 
-             <!-- <div class="searchBook">
+             <div id="searchBook">
                 <h1 class="heading"><u>Search Book</u></h1>
                 <form action="" class="searchBookF">
                     <label for="bookId">Book Id : <input type="number" id="bookId" class="inputSpace"></label>
                 </form>
                 <button class="search">Search</button>
-            </div> -->
+            </div>
 
-            <div class="viewOrders">
+            <div id="viewOrders">
                 <h1 class="heading"><u>View Orders</u></h1>
                 <form action="" class="viewOrdersF">
                     <label for="bookName">Book Name : <input type="text" id="bookName" class="inputSpace"></label>

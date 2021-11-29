@@ -62,29 +62,33 @@ body
     flex-direction: column;
    
 }
-.addBook
+#addBook
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-self: center;
     align-items: center;
     margin-bottom: 1.5rem ;
-   
+    margin: 0 auto;
+    display: none;
+
 }
 h1
 {
     margin: 1.5rem auto;
     justify-content: center;
+    align-self: center;
+    text-align: center;
 
 }
-.addBook .inputSpace
+#addBook .inputSpace
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
- .addBook label{
+ #addBook label{
     display: inline-block;
     float: left; 
     width: 100px;
@@ -97,14 +101,18 @@ h1
   display: inline;
   float: right;
   width: 8rem;
+  justify-self:center;
+  align-self: center;
   text-align: center;
 }
 
-.updateBook
+#updateBook
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    display: none;
+    margin: 0 auto;
 }
 
 .updateBookF
@@ -120,11 +128,13 @@ h1
     height: 1.5rem;
     margin: 1rem auto;
 }
-.deleteBook
+#deleteBook
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
+    display: none;
 }
 
 .deleteBookF
@@ -140,11 +150,13 @@ h1
     height: 1.5rem;
     margin: 1rem auto;
 }
-.searchBook
+#searchBook
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
+    display: none;
 }
 
 .searchBookF
@@ -155,11 +167,13 @@ h1
     margin: 10px auto;
 }
 
-.viewOrders
+#viewOrders
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
+    display: none;
 }
 
 .viewOrdersF
@@ -182,4 +196,8 @@ h1
     float: right;
     justify-content: right;
     margin: 5px 8px ;
+}
+#viewOrders .search
+{
+   margin-left: 12rem;
 }

@@ -54,52 +54,62 @@ body
 {
     margin-left: 10px;
 }
-.allBooks
+#allBooks
 {
     display: flex;
     flex-direction: column;
     margin: 1.5rem auto;
+    justify-self: center;
+    align-content: center;
+    display: none;
 }
-.heading
+ .heading
 {
     align-self: center;
-    justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    justify-self: center;
+    text-align: center;
+    margin: 1rem auto;
 }
-.searchBook
+#searchBook
 {
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-self: center;
     margin: 1rem auto;  
+    display: none;
 }
-.searchBook label
+.searchBookF label
 {
     margin: 1rem 25rem;
     margin-bottom: 3rem;
 }
-.search
+#searchBook .search
 {
-    margin: 1rem;
+    margin-top: 1rem ;
+    margin-left: 30rem;
     width: 4rem;
     align-self: center;
+    justify-self: center;
 }
 
-.placeOrder
+#placeOrder
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 1rem auto;
+    display: none;
 }
 .placeOrderF
 {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-self: center;
     align-self: center;
+    width: 20rem;
+    margin: 0 auto;
    
 }
 .placeOrderF .inputSpace
@@ -112,19 +122,22 @@ body
     align-self: center;
 }
 
-.returnBook
+#returnBook
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    display: none;
 }
 
 .returnBookF
 {
     display: flex;
     flex-direction: column;
+    
 }
-.returnBook label
+#returnBook label
 {
     display: inline-block;
     float: center;
@@ -135,11 +148,12 @@ body
     width: 5rem;
     align-self: center;
 }
-.issuedBook
+#issuedBook
 {
     display: flex;
     flex-direction: column;
     align-self: center;
+    display: none;
 }
 .issuedBookF
 {

@@ -5,10 +5,7 @@
 }
 body
 {
-    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ;
-   font-family: <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Fredericka+the+Great&family=Montserrat&display=swap" rel="stylesheet"> ;
+    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ; 
     background-size: cover;
     
 }

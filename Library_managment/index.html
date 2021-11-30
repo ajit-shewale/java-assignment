@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
     <title>Library</title>
 </head>
 <body>
@@ -17,13 +18,12 @@
                 <label for="password">Password : </label>
                 <input type="password" id="password" class="inputSpace"><br>
                 <label for="userType">User Type : 
-                    <input type="checkbox" id="admin" name="admin">
-                    <label for="admin">Admin</label>
-                    <input type="checkbox" id="student" name="student">
-                    <label for="student">Student</label>
+                    <input type="radio" id="admin" name="userType"  value="admin">Admin
+                    <input type="radio" id="student" name="userType" value="student" >Student
                 </label><br>
-                <button  class="signIn" type="submit">Sign In</button>
+                <button onclick="login()" class="signIn" type="submit" >Sign In</button>
             </form>
+            <div id="temp"></div>
         </div>
     </div>
 </body>

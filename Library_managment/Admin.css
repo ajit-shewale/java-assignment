@@ -56,12 +56,34 @@ body
     margin-left: 10px;
 }
 
-.optionDisplay
+/* .optionDisplay
 {
     display: flex;
     flex-direction: column;
-   
+} */
+
+.addBookContainer
+{
+    display: flex;
+    flex-direction: row;
+
 }
+#bookTable
+{
+    box-sizing: border-box;
+    background-color: rgb(224, 239, 252);
+    padding: 3px;
+    height: 25rem;
+    margin: 1.5rem ;
+    width: 25rem;
+  
+}
+#bookTable table
+{
+    width: 25rem;
+    
+}
+
 #addBook
 {
     display: flex;

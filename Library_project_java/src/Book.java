@@ -1,9 +1,8 @@
-import java.io.Serializable;
-
-public class Book implements Serializable 
+public class Book 
 {
 	private int id;
-	private String title,author;
+	private String title;
+	private String author;
 	private double price;
 	
 	public Book()
@@ -14,17 +13,19 @@ public class Book implements Serializable
 		price=0;
 	}
 	
-	Public Book(int id,String title, String author,double price)
+	public Book(int id,String title, String author,double price)
 	{
 		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.price = price;
 	}
-	
-	public String toString()
-	{
-		return "\nTitle: "+ title +"\nAuthor: "+ author +"\nId: "+ id +
-				"\nPrice: "+ price +"\n";
+
+	public int getId() {
+		return id;
 	}
+	public String toString(){
+		return"Book{"+"Id: "+id+" Title: "+title+" Author: "+author+" Price: "+price+"}";
+	}
+	
 }

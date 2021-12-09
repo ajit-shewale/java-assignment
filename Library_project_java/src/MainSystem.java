@@ -15,6 +15,8 @@ public class MainSystem
 			System.out.print("\n1.Show the Library");
 			System.out.print("\n2.Add Book");
 			System.out.print("\n3.Remove Book");
+			System.out.print("\n4.Issue a Book");
+			System.out.print("\n5.Return Book");
 			System.out.print("\n0.EXIT");
 			System.out.print("\nEnter your choice : ");
 			choice = sc.nextInt();
@@ -24,9 +26,17 @@ public class MainSystem
 			{
 				case 1:lib.showLibrary();
 				break;
-				case 2: lib.bookSpec();
+				case 2: lib.addBook();
 				break;
 				case 3: lib.removeBook();
+				break;
+				case 4: lib.issueBook();
+				break;
+				case 5:lib.returnBook();
+				break;
+				case 0: System.out.println("----------Thank you----------");
+				break;	
+				default : System.out.println("Invalid Choice !!");
 				break;
 			}
 		} while(choice!=0);

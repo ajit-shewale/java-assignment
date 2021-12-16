@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
     <script src="index.js"></script>
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="library">Library</div>
-        <div class="signInBlock">
-            <form action="" name="signIn">
-                <label for="email">Email : </label>
-                <input type="email" id="email" class="inputSpace"><br>
-                <label for="password">Password : </label>
-                <input type="password" id="password" class="inputSpace"><br>
-                <label for="userType">User Type : 
-                    <input type="radio" id="admin" name="userType"  value="admin">Admin
-                    <input type="radio" id="student" name="userType" value="student" >Student
-                </label><br>
-                <button onclick="login()" class="signIn" type="submit" >Sign In</button>
-            </form>
-            <div id="temp"></div>
-        </div>
+      <div class="library">Library</div>
+      <div class="signInBlock">
+        <form action="" name="signIn">
+          <label for="email">Email : </label>
+          <input type="email" id="email" class="inputSpace" /><br />
+          <label for="password">Password : </label>
+          <input type="password" id="password" class="inputSpace" /><br />
+          <label for="userType"
+            >User Type :
+            <input type="radio" id="admin" name="userType" value="admin" />Admin
+            <input
+              type="radio"
+              id="student"
+              name="userType"
+              value="student"
+            />Student </label
+          ><br />
+          <button onclick="login()" class="signIn" type="submit">
+            Sign In
+          </button>
+        </form>
+        <div id="temp"></div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -1,59 +1,51 @@
-*
-{
-    margin: 0%;
-    padding: 0%;
+* {
+  margin: 0%;
+  padding: 0%;
 }
-body
-{
-    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ;
-    background-size: cover;
+body {
+  background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat
+    center center;
+  background-size: cover;
 }
-.admin
-{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 900;
-    font-size: 3rem;
-    margin: 15px;
-    text-align: center;
-    color: blanchedalmond;
+.admin {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 3rem;
+  margin: 15px;
+  text-align: center;
+  color: blanchedalmond;
 }
-.container
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    background-color: rgb(236, 238, 223);
-    width: 70rem;
-    height: 32rem;
-    margin: 5rem auto;
-    padding: 25px;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  background-color: rgb(236, 238, 223);
+  width: 70rem;
+  height: 32rem;
+  margin: 5rem auto;
+  padding: 25px;
 }
 
-.buttonRow
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    justify-content: center;
-    box-sizing: border-box;
-   
-   
+.buttonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
 }
-.button
-{   
-    height: 2.5rem;
-    width: 35rem;
-    background-color: rgba(255, 111, 111, 0.993);
-   border: 0px;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
+.button {
+  height: 2.5rem;
+  width: 35rem;
+  background-color: rgba(255, 111, 111, 0.993);
+  border: 0px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
 }
 
-.buttonRow .button:not(:first-child)
-{
-    margin-left: 10px;
+.buttonRow .button:not(:first-child) {
+  margin-left: 10px;
 }
 
 /* .optionDisplay
@@ -62,164 +54,139 @@ body
     flex-direction: column;
 } */
 
-.addBookContainer
-{
-    display: flex;
-    flex-direction: row;
-
+.addBookContainer {
+  display: flex;
+  flex-direction: row;
 }
-#bookTable
-{
-    box-sizing: border-box;
-    background-color: rgb(224, 239, 252);
-    padding: 3px;
-    height: 25rem;
-    margin: 1.5rem ;
-    width: 25rem;
-  
+#bookTable {
+  box-sizing: border-box;
+  background-color: rgb(224, 239, 252);
+  padding: 3px;
+  height: 25rem;
+  margin: 1.5rem;
+  width: 25rem;
 }
-#bookTable table
-{
-    width: 25rem;
-    
+#bookTable table {
+  width: 25rem;
 }
 
-#addBook
-{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-items: center;
-    margin-bottom: 1.5rem ;
-    margin: 0 auto;
-    display: none;
-
+#addBook {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin: 0 auto;
+  display: none;
 }
-h1
-{
-    margin: 1.5rem auto;
-    justify-content: center;
-    align-self: center;
-    text-align: center;
-
+h1 {
+  margin: 1.5rem auto;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
 }
-#addBook .inputSpace
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+#addBook .inputSpace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
- #addBook label{
-    display: inline-block;
-    float: left; 
-    width: 100px;
-    text-align: right;
-    margin-bottom: 1rem;
-    margin-right: 10px;
+#addBook label {
+  display: inline-block;
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin-bottom: 1rem;
+  margin-right: 10px;
 }
-.add
-{
+.add {
   display: inline;
   float: right;
   width: 8rem;
-  justify-self:center;
+  justify-self: center;
   align-self: center;
   text-align: center;
 }
 
-#updateBook
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    display: none;
-    margin: 0 auto;
+#updateBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+  margin: 0 auto;
 }
 
-.updateBookF
-{
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    margin: 10px auto;
+.updateBookF {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  margin: 10px auto;
 }
-.search
-{
-    width: 5rem;
-    height: 1.5rem;
-    margin: 1rem auto;
+.search {
+  width: 5rem;
+  height: 1.5rem;
+  margin: 1rem auto;
 }
-#deleteBook
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    display: none;
+#deleteBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  display: none;
 }
 
-.deleteBookF
-{
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    margin: 10px auto;
+.deleteBookF {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  margin: 10px auto;
 }
-.delete
-{
-    width: 5rem;
-    height: 1.5rem;
-    margin: 1rem auto;
+.delete {
+  width: 5rem;
+  height: 1.5rem;
+  margin: 1rem auto;
 }
-#searchBook
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    display: none;
+#searchBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  display: none;
 }
 
-.searchBookF
-{
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    margin: 10px auto;
+.searchBookF {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  margin: 10px auto;
 }
 
-#viewOrders
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    display: none;
+#viewOrders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  display: none;
 }
 
-.viewOrdersF
-{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    margin: 10px auto;
+.viewOrdersF {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin: 10px auto;
 }
-.viewOrdersF label
-{
-    display: inline;
-    float: left;
-    justify-content: left;
-    width: 100;
+.viewOrdersF label {
+  display: inline;
+  float: left;
+  justify-content: left;
+  width: 100;
 }
-.viewOrdersF .inputSpace
-{
-    display: inline;
-    float: right;
-    justify-content: right;
-    margin: 5px 8px ;
+.viewOrdersF .inputSpace {
+  display: inline;
+  float: right;
+  justify-content: right;
+  margin: 5px 8px;
 }
-#viewOrders .search
-{
-   margin-left: 12rem;
+#viewOrders .search {
+  margin-left: 12rem;
 }

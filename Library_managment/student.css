@@ -1,177 +1,142 @@
-*
-{
-    margin: 0%;
-    padding: 0%;
+* {
+  margin: 0%;
+  padding: 0%;
 }
-body
-{
-    background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat center center ;
-    background-size: cover;
+body {
+  background: url("https://wallpaperaccess.com/full/4531800.jpg") no-repeat
+    center center;
+  background-size: cover;
 }
-.student
-{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 900;
-    font-size: 3rem;
-    margin: 15px;
-    text-align: center;
-    color: blanchedalmond;
+.student {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 3rem;
+  margin: 15px;
+  text-align: center;
+  color: blanchedalmond;
 }
-.container
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    background-color: rgb(236, 238, 223);
-    width: 70rem;
-    height: 30rem;
-    margin: 5rem auto;
-    padding: 25px;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  background-color: rgb(236, 238, 223);
+  width: 70rem;
+  height: 30rem;
+  margin: 5rem auto;
+  padding: 25px;
 }
 
-.buttonRow
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    justify-content: center;
-    box-sizing: border-box;
-   
-   
+.buttonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
 }
-.button
-{   
-    height: 2.5rem;
-    width: 35rem;
-    background-color: rgba(255, 111, 111, 0.993);
-   border: 0px;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
+.button {
+  height: 2.5rem;
+  width: 35rem;
+  background-color: rgba(255, 111, 111, 0.993);
+  border: 0px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
 }
-.buttonRow .button:not(:first-child)
-{
-    margin-left: 10px;
+.buttonRow .button:not(:first-child) {
+  margin-left: 10px;
 }
-#allBooks
-{
-    display: flex;
-    flex-direction: column;
-    margin: 1.5rem auto;
-    justify-self: center;
-    align-content: center;
-    display: none;
+#allBooks {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem auto;
+  justify-self: center;
+  align-content: center;
+  display: none;
 }
- .heading
-{
-    align-self: center;
-    justify-self: center;
-    text-align: center;
-    margin: 1rem auto;
+.heading {
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  margin: 1rem auto;
 }
-#searchBook
-{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-self: center;
-    margin: 1rem auto;  
-    display: none;
+#searchBook {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  margin: 1rem auto;
+  display: none;
 }
-.searchBookF label
-{
-    margin: 1rem 25rem;
-    margin-bottom: 3rem;
+.searchBookF label {
+  margin: 1rem 25rem;
+  margin-bottom: 3rem;
 }
-#searchBook .search
-{
-    margin-top: 1rem ;
-    margin-left: 30rem;
-    width: 4rem;
-    align-self: center;
-    justify-self: center;
+#searchBook .search {
+  margin-top: 1rem;
+  margin-left: 30rem;
+  width: 4rem;
+  align-self: center;
+  justify-self: center;
 }
 
-#placeOrder
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem auto;
-    display: none;
+#placeOrder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  display: none;
 }
-.placeOrderF
-{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    width: 20rem;
-    margin: 0 auto;
-   
+.placeOrderF {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  width: 20rem;
+  margin: 0 auto;
 }
-.placeOrderF .inputSpace
-{
-   margin: 1rem;
+.placeOrderF .inputSpace {
+  margin: 1rem;
 }
-.placeOrderButton
-{
-    width: 7rem;
-    align-self: center;
+.placeOrderButton {
+  width: 7rem;
+  align-self: center;
 }
 
-#returnBook
-{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    display: none;
+#returnBook {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  display: none;
 }
 
-.returnBookF
-{
-    display: flex;
-    flex-direction: column;
-    
+.returnBookF {
+  display: flex;
+  flex-direction: column;
 }
-#returnBook label
-{
-    display: inline-block;
-    float: center;
-    margin: 0.5rem auto;
+#returnBook label {
+  display: inline-block;
+  float: center;
+  margin: 0.5rem auto;
 }
-.return
-{
-    width: 5rem;
-    align-self: center;
+.return {
+  width: 5rem;
+  align-self: center;
 }
-#issuedBook
-{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    display: none;
+#issuedBook {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  display: none;
 }
-.issuedBookF
-{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+.issuedBookF {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
-.issuedBookF label
-{
-    margin: 5px 30rem;
-    justify-self: center;
-    
+.issuedBookF label {
+  margin: 5px 30rem;
+  justify-self: center;
 }
-
-
-
-
-
-
-
-

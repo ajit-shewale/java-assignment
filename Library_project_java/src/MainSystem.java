@@ -1,10 +1,14 @@
 import java.util.Scanner;
+import java.sql.*;
+import com.mysql.*;
+
 
 public class MainSystem {
 	static Library lib = new Library();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		int choice;
 		do {
 			System.out.print("\n###___MENU___###");
@@ -43,4 +47,5 @@ public class MainSystem {
 			}
 		} while (choice != 0);
 	}
+
 }

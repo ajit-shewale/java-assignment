@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface LibraryRepository extends CrudRepository<Library, Integer> {
+@Repository
+public interface LibraryRepository extends CrudRepository<LibraryServiceImpl, Integer> {
 
 }

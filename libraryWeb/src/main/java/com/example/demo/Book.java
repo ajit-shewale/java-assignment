@@ -1,25 +1,34 @@
 package com.example.demo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
+@Table(name="library_table",catalog="library_schema")
 class Book {
 	@Id
+	@Column(name="Book_Id")
 	private int id;
+	@Column(name="Title")
 	private String title;
+	@Column(name="Author")
 	private String author;
+	@Column(name="Cost")
 	private double price;
+	@Column(name="Quantity")
 	private int quantity;
 
 	public Book() {
-		id = 0;
-		title = null;
-		author = null;
-		price = 0;
-		quantity = 0;
+		super();
+//		id = 0;
+//		title = null;
+//		author = null;
+//		price = 0;
+//		quantity = 0;
 	}
 
 	public Book(int id, String title, String author, double price, int quantity) {

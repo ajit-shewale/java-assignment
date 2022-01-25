@@ -9,11 +9,11 @@
 		<version>2.6.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.RestAPI2</groupId>
-	<artifactId>libraryWeb-1</artifactId>
+	<groupId>com.springPostmen</groupId>
+	<artifactId>postmentpractice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>libraryWeb-1</name>
-	<description>Demo project for Spring Boot</description>
+	<name>postmentpractice</name>
+	<description> project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -43,11 +43,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.6.3.Final</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

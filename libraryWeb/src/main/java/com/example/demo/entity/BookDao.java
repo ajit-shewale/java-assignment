@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="library_table",catalog="library_schema")
-class Book {
+public class BookDao {
 	@Id
 	@Column(name="Book_Id")
 	private int id;
@@ -22,16 +22,11 @@ class Book {
 	@Column(name="Quantity")
 	private int quantity;
 
-	public Book() {
+	public BookDao() {
 		super();
-//		id = 0;
-//		title = null;
-//		author = null;
-//		price = 0;
-//		quantity = 0;
 	}
 
-	public Book(int id, String title, String author, double price, int quantity) {
+	public BookDao(int id, String title, String author, double price, int quantity) {
 		this.id = id;
 		this.title = title;
 		this.author = author;

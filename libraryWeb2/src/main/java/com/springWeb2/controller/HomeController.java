@@ -38,7 +38,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping(value = "/addBookForm")  
+	@GetMapping(value = "/showNewBookForm")  
 	public String addBookForm(Model model) {
 		BookDao book  = new BookDao();
 		model.addAttribute("book",book);

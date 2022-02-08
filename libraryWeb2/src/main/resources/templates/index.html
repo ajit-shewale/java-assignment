@@ -11,9 +11,10 @@
 </head>
 <body>
 
-	<div class="container 1">
-		<a th:herf="@{/new_book}" class="btn btn-primary btn-sm mb-3">Add
-			Book</a>
+	<div class="container my-2">
+		<Library Management System> 
+		<a th:href="@{/showNewBookForm}"
+			class="btn btn-primary btn-sm mb-3">Add Book</a>
 		<h1 align=center>Library Management System</h1>
 		<table border="1" class="table table-striped table-responcive-md">
 			<thead>
@@ -27,19 +28,20 @@
 				</tr>
 			</thead>
 			<tbody>
-			
-			<tr th:each="book: ${booksList}">
+
+				<tr th:each="book: ${booksList}">
 					<td th:text="${book.id}">Id</td>
 					<td th:text="${book.title}">Title</td>
 					<td th:text="${book.author}">Author</td>
 					<td th:text="${book.cost}">Cost</td>
 					<td th:text="${book.quantity}">Quantity</td>
-					
-					<td align=center><a th:herf="@{/showFormForUpdate/{id}(id=${book.id})}"
-						class="btn btn-primary">Update</a>
-					<a th:herf="@{/deleteBook/{id}(id=${book.id})}"
-						class="btn btn-danger">Delete</a></td>   
-					</tr>
+
+					<td align=center><a
+						th:href="@{/showFormForUpdate/{id}(id=${book.id})}"
+						class="btn btn-primary">Update</a> <a
+						th:href="@{/deleteBook/{id}(id=${book.id})}"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

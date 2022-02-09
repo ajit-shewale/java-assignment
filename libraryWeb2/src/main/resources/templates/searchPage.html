@@ -12,11 +12,15 @@
 <body>
 
 	<div class="container my-2">
-		<br> <a th:href="@{/showNewBookForm}"
-			class="btn btn-primary btn-sm mb-3">Add Book</a>
-			<a th:href="@{/showSearchBookForm}"
-			class="btn btn-primary btn-sm mb-3">Search</a>
-		<h1 align=center>Library Management System</h1><hr>
+		<br> 
+		
+		<h1 align=left>Search</h1><hr>
+		<form th:action="@{/searchBook}" method="get">
+  <input type="text" name="keyword" th:value="${keyword}"  placeholder="Search a Book..." size="50" >
+  <button type="submit" class="btn btn-info" >Search</button>
+  <button type="reset" class="btn btn-info" >Reset</button>
+  </form>
+<br><br>
 		<table border="1" class="table table-striped table-responcive-md">
 			<thead >
 				<tr>
@@ -45,6 +49,7 @@
 				</tr>
 			</tbody>
 		</table>
+		<a th:href="@{/}" class="btn btn-primary float-right">Go to HomePage</a>
 	</div>
 </body>
 </html>

@@ -42,5 +42,10 @@ public class LibraryServiceImpl implements LibraryServiceInterface {
 	public List<BookDao> findAllBooks() {
 		return (List<BookDao>) libraryRepo.findAll();
 	}
+	
+	@Override
+	public List<BookDao> getByKeyword(String keyword){
+		  return libraryRepo.findByKeyword(keyword);
+		 }
 
 }

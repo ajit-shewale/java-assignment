@@ -10,4 +10,5 @@ public interface LibraryServiceInterface {
 	public BookDao updateBook(BookDao book);
 	public void deleteBook(int id);
 	public BookDao getBookById(int id);
+	public List<BookDao> getByKeyword(String keyword);
 }

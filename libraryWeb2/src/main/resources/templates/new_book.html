@@ -15,16 +15,16 @@
 		<h2>Add Book</h2>
 		<form action="#" th:action="@{/saveBook}" th:object="${book}"
 			method="POST">
-			<input type="number" th:field="*{id}" placeholder="book id"
-				class="form-control mb-4 col-4"> <input type="text"
+			<!--  <input type="text" th:field="*{id}" placeholder="book id"
+				class="form-control mb-4 col-4" />--> <input type="text"
 				th:field="*{title}" placeholder="book title"
-				class="form-control mb-4 col-4"> <input type="text"
+				class="form-control mb-4 col-4" /> <input type="text"
 				th:field="*{author}" placeholder="authors name"
-				class="form-control mb-4 col-4"> <input type="number"
+				class="form-control mb-4 col-4" /> <input type="text"
 				th:field="*{cost}" placeholder="MRP of book"
-				class="form-control mb-4 col-4"> <input type="number"
+				class="form-control mb-4 col-4" /> <input type="text"
 				th:field="*{quantity}" placeholder="book quantity"
-				class="form-control mb-4 col-4"/>
+				class="form-control mb-4 col-4" />
 
 			<button type="submit" class="btn btn-info col-2">Save Book</button>
 		</form>

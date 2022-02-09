@@ -52,12 +52,13 @@ public class HomeController {
 	}
 	
 	@GetMapping("/showFormForUpdate/{id}")
-	public String showFormForUpdate(@PathVariable(value="id") int id,Model model) {
+	public String showFormForUpdate(@PathVariable int id,Model model) {
 		BookDao book = libraryServiceImpl.getBookById(id);
 		model.addAttribute("book",book);
 		return "update_book";
 	}
 	
+	@GetMapping("/deleteBook/{id}")
 	public String deleteBook(@PathVariable (value="id") int id) {
 		this.libraryServiceImpl.deleteBook(id);
 		return "redirect:/";

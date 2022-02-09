@@ -22,14 +22,8 @@ public class LibraryServiceImpl implements LibraryServiceInterface {
 	}
 	
 	public BookDao getBookById(int id) {
-		Optional<BookDao> optional = libraryRepo.findById(id);
-		BookDao book = null;
-		if(optional.isPresent()) {
-			book = optional.get();
-		}else {
-			throw new RuntimeException("Book not found for id : " + id );
-		}
-		return book;
+		
+		return libraryRepo.findById(id).get();
 	}
 
 	@Override

@@ -8,44 +8,53 @@ import org.springframework.stereotype.Service;
 
 import com.springWeb2.service.LibraryServiceInterface;
 import com.springWeb2.entity.BookDao;
+import com.springWeb2.entity.IssuedBookDao;
+import com.springWeb2.repository.IssuedBookRepository;
 import com.springWeb2.repository.LibraryRepository;
 
 @Service
 public class LibraryServiceImpl implements LibraryServiceInterface {
 
-	@Autowired
-	private LibraryRepository libraryRepo;
+    @Autowired
+    private LibraryRepository libraryRepo;
 
-	@Override
-	public void saveBook(BookDao book) {
-		this.libraryRepo.save(book);
-	}
-	
-	public BookDao getBookById(int id) {
-		
-		return libraryRepo.findById(id).get();
-	}
+    @Override
+    public void saveBook(BookDao book) {
+        this.libraryRepo.save(book);
+    }
 
-	@Override
-	public BookDao updateBook(BookDao book) {
-		return libraryRepo.save(book);
+    public BookDao getBookById(int id) {
 
-	}
+        return libraryRepo.findById(id).get();
+    }
 
-	@Override
-	public void deleteBook(int id) {
-		libraryRepo.deleteById(id);
+    @Override
+    public BookDao updateBook(BookDao book) {
+        return libraryRepo.save(book);
 
-	}
+    }
 
-	@Override
-	public List<BookDao> findAllBooks() {
-		return (List<BookDao>) libraryRepo.findAll();
-	}
-	
-	@Override
-	public List<BookDao> getByKeyword(String keyword){
-		  return libraryRepo.findByKeyword(keyword);
-		 }
+    @Override
+    public void deleteBook(int id) {
+        libraryRepo.deleteById(id);
+
+    }
+
+    @Override
+    public List<BookDao> findAllBooks() {
+        return (List<BookDao>) libraryRepo.findAll();
+    }
+
+    @Override
+    public List<BookDao> getByKeyword(String keyword) {
+        return libraryRepo.findByKeyword(keyword);
+    }
+
+@Override
+    public void getIssuedBookById(int id) {
+        this.libraryRepo.insertIssuedBook(id);
+    }
+
+    
 
 }

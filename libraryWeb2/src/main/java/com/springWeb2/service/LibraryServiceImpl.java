@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.springWeb2.service.LibraryServiceInterface;
 import com.springWeb2.entity.BookDao;
 import com.springWeb2.entity.IssuedBookDao;
-import com.springWeb2.repository.IssuedBookRepository;
 import com.springWeb2.repository.LibraryRepository;
 
 @Service
@@ -49,12 +48,5 @@ public class LibraryServiceImpl implements LibraryServiceInterface {
     public List<BookDao> getByKeyword(String keyword) {
         return libraryRepo.findByKeyword(keyword);
     }
-
-@Override
-    public void getIssuedBookById(int id) {
-        this.libraryRepo.insertIssuedBook(id);
-    }
-
-    
 
 }

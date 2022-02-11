@@ -7,10 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-public class IssuedBookDao {
     @Entity
     @Table(name = "issued_books_table")
-    public class BookDao {
+    public class IssuedBookDao {
         @Id
         @Column(name = "Book_Id")
         private int id;
@@ -21,11 +20,11 @@ public class IssuedBookDao {
         @Column(name = "Cost")
         private double cost;
 
-        public BookDao() {
+        public IssuedBookDao() {
             super();
         }
 
-        public BookDao(int id, String title, String author, double cost) {
+        public IssuedBookDao(int id, String title, String author, double cost) {
             this.id = id;
             this.title = title;
             this.author = author;
@@ -69,4 +68,3 @@ public class IssuedBookDao {
             return "Book [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost + "]";
         }
     }
-}

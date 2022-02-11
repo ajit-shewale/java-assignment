@@ -68,12 +68,6 @@ public class HomeController {   //temporary comment
         return "redirect:/";
     }
     
-    @PostMapping(value = "/saveIssuedBook")
-    public String saveIssuedBook(@ModelAttribute("book") IssuedBookDao book) {
-        libraryServiceImpl.saveIssuedBook(book);
-        return "redirect:/";
-    }
-
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable int id, Model model) {
         BookDao book = libraryServiceImpl.getBookById(id);
@@ -87,9 +81,5 @@ public class HomeController {   //temporary comment
         return "redirect:/";
     }
     
-    @GetMapping("/showIssuedBooks/{id}")
-    public String showIssuedBooks(@PathVariable int id) {
-         libraryServiceImpl.getIssuedBookById(id);
-       return "issued_books";
-    }
+   
 }

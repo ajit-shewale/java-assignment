@@ -13,5 +13,4 @@ public interface LibraryServiceInterface {
 	public BookDao getBookById(int id);
 	public List<BookDao> getByKeyword(String keyword);
 	
-	public void getIssuedBookById(int id);
 }

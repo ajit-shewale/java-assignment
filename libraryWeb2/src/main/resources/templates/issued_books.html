@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=en xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Issued Books</title>
@@ -29,11 +29,14 @@
 					<td th:text="${book.title}"></td>
 					<td th:text="${book.author}"></td>
 					<td th:text="${book.cost}"></td>
-					<td align=center><a 
-						class="btn btn-primary">return</a>
+					<td align=center><a
+                        th:href="@{/deleteIssuedBook/{id}(id=${book.id})}"
+                        class="btn btn-danger">Return</a>
 				</tr>
 			</tbody>
 		</table>
+		<hr>
+        <a th:href="@{/}">Back to Library</a>
 	</div>
 </body>
 </html>

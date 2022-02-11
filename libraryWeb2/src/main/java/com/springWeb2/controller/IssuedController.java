@@ -1,5 +1,10 @@
 package com.springWeb2.controller;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +24,14 @@ public class IssuedController {
 
     @Autowired
     private LibraryServiceImpl libraryServiceImpl;
-
+    
     @GetMapping("/addIssuedBook/{id}")
     public String addIssuedBook(@PathVariable int id) {
         BookDao book = libraryServiceImpl.getBookById(id);
-        IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost());
+      
+        LocalDate date = LocalDate.now();
+       
+        IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),date ,date.plusDays(10));
         issuedServiceImpl.saveBook(Ibook);
         book.setStatus("Issued");
         libraryServiceImpl.saveBook(book);
@@ -42,6 +50,6 @@ public class IssuedController {
         book.setStatus("not issued");
         libraryServiceImpl.saveBook(book);
         this.issuedServiceImpl.deleteBook(id);
-        return "redirect:/";
+        return "redirect:/showIssuedBooks";
     }
 }

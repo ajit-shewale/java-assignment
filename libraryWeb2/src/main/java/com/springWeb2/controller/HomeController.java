@@ -27,7 +27,7 @@ import com.springWeb2.entity.IssuedBookDao;
 import com.springWeb2.service.LibraryServiceImpl;
 
 @Controller
-public class HomeController {   //temporary comment
+public class HomeController { 
 
     @Autowired
     private LibraryServiceImpl libraryServiceImpl;

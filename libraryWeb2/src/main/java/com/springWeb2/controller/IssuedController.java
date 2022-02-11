@@ -25,6 +25,8 @@ public class IssuedController {
         BookDao book = libraryServiceImpl.getBookById(id);
         IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost());
         issuedServiceImpl.saveBook(Ibook);
+        book.setStatus("Issued");
+        libraryServiceImpl.saveBook(book);
         return "redirect:/";
     }
 
@@ -36,6 +38,9 @@ public class IssuedController {
 
     @GetMapping("/deleteIssuedBook/{id}")
     public String deleteIssuedBook(@PathVariable(value = "id") int id) {
+        BookDao book = libraryServiceImpl.getBookById(id);
+        book.setStatus("not issued");
+        libraryServiceImpl.saveBook(book);
         this.issuedServiceImpl.deleteBook(id);
         return "redirect:/";
     }

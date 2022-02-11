@@ -27,6 +27,7 @@
 					<th>Author</th>
 					<th>Cost</th>
 					<th>Quantity</th>
+					<th>Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -38,6 +39,7 @@
 					<td th:text="${book.author}">Author</td>
 					<td th:text="${book.cost}">Cost</td>
 					<td th:text="${book.quantity}">Quantity</td>
+					<td th:text="${book.status}">Status</td>
 
 					<td align=center><a
 						th:href="@{/showFormForUpdate/{id}(id=${book.id})}"

@@ -24,20 +24,25 @@ public class BookDao {
 	private double cost;
 	@Column(name="Quantity")
 	private int quantity;
+	@Column(name="Status")
+    private String status;
 
-	public BookDao() {
+    public BookDao() {
 		super();
 	}
 
-	public BookDao(int id, String title, String author, double cost, int quantity) {
-		this.id = id;
-		this.title = title;
-		this.author = author;
-		this.cost = cost;
-		this.quantity = quantity;
-	}
 
-	public int getId() {
+	public BookDao(int id, String title, String author, double cost, int quantity, String status) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.cost = cost;
+        this.quantity = quantity;
+        this.status = status;
+    }
+
+    public int getId() {
 		return id;
 	}
 
@@ -77,11 +82,19 @@ public class BookDao {
 		this.quantity = quantity;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost + ", quantity="
-				+ quantity + "]";
-	}
-	
+	public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "BookDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost + ", quantity="
+                + quantity + ", status=" + status + "]";
+    }
+    
 }
 

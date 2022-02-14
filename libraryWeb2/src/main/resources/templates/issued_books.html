@@ -12,7 +12,8 @@
 <body>
 
 	<div class="container 1">
-		<h1>Issued Books</h1><hr>
+		<h1>Issued Books</h1>
+		<hr>
 		<table border="1" class="table table-striped table-responcive-md">
 			<thead>
 				<tr>
@@ -21,7 +22,7 @@
 					<th>Author</th>
 					<th>Cost</th>
 					<th>Issued Date</th>
-                    <th>Return Date</th>
+					<th>Return Date</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -34,13 +35,16 @@
 					<td th:text="${book.issued_date}"></td>
 					<td th:text="${book.return_date}"></td>
 					<td align=center><a
-                        th:href="@{/deleteIssuedBook/{id}(id=${book.id})}"
-                        class="btn btn-danger">Return</a>
+						th:href="@{/deleteIssuedBook/{id}(id=${book.id})}"
+						class="btn btn-danger">Return</a>
 				</tr>
 			</tbody>
 		</table>
 		<hr>
-        <a th:href="@{/}">Back to Library</a>
+		<a th:href="@{/}">Back to Library</a> 
+		<a
+			th:href="@{/report}"
+			class="btn btn-primary">Generate Report</a>
 	</div>
 </body>
 </html>

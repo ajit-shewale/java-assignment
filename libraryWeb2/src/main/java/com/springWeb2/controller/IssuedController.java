@@ -1,23 +1,16 @@
 package com.springWeb2.controller;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.lowagie.text.pdf.codec.Base64.OutputStream;
 import com.springWeb2.entity.BookDao;
 import com.springWeb2.entity.IssuedBookDao;
 import com.springWeb2.service.IssuedServiceImpl;
@@ -25,8 +18,6 @@ import com.springWeb2.service.LibraryServiceImpl;
 import com.springWeb2.service.ReportService;
 
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperPrint;
 
 @Controller
 public class IssuedController {
@@ -38,7 +29,7 @@ public class IssuedController {
     private LibraryServiceImpl libraryServiceImpl;
     
     @Autowired
-    private ReportService reportServiceImpl;
+    private ReportService service;
     
     @GetMapping("/addIssuedBook/{id}")
     public String addIssuedBook(@PathVariable int id) {
@@ -69,8 +60,8 @@ public class IssuedController {
     }
     
     @GetMapping("/report")
-    public void generateReport() throws FileNotFoundException, JRException {
-        reportServiceImpl.exportReport();
+    public void generateReport(HttpServletResponse response ) throws JRException, IOException {
+        
+        service.exportReport(response);
     }
-    
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Table(name="library_table")
 public class BookDao {
 	@Id
-	@Column(name="Book_Id")
+	@Column(name="Book_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int id;
 	@Column(name="Title")

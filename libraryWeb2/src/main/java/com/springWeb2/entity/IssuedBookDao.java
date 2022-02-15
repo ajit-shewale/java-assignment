@@ -14,7 +14,7 @@ import javax.persistence.Table;
     @Table(name = "issued_books_table")
     public class IssuedBookDao {
         @Id
-        @Column(name = "Book_Id")
+        @Column(name = "Book_id")
         private int id;
         @Column(name = "Title")
         private String title;

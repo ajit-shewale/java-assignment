@@ -35,26 +35,10 @@ public class ReportService {
     @Autowired
     private IssuedRepository repository;
 
-//    public String exportReport() throws FileNotFoundException, JRException {
-//        String path = "D:\\Report";
-//        List<IssuedBookDao> employees = repository.findAll();
-//        //load file and compile it
-//        File file = ResourceUtils.getFile("classpath:report11.jrxml");
-//        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-//        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(employees);
-//        Map<String, Object> parameters = new HashMap<>();
-//        //parameters.put("createdBy", "Java Techie");
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-//        JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\Report\\report11.pdf");
-//        
-//
-//        return "report generated in path : " + "D:\\Report";
-//    }
-
     public void exportReport(HttpServletResponse response) throws JRException, IOException {
         String path = "C:\\Users\\ajits\\Desktop\\tempReports";
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("reportName", "Ajit");
+        parameters.put("reportName", "Issued Books");
 
         List<IssuedBookDao> IBooks = repository.findAll();
         File file = ResourceUtils.getFile("classpath:reportDemo.jrxml");
@@ -66,6 +50,33 @@ public class ReportService {
         System.out.println("Report created...");
         StringBuilder fileArg = new StringBuilder("attchment" + "; filename=");
         fileArg.append("reportDemo.pdf");
+
+        response.setContentType("application/x-download");
+        response.addHeader("Content-Disposition", fileArg.toString());
+
+        JRPdfExporter exporter = new JRPdfExporter();
+        OutputStream out = response.getOutputStream();
+        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(out));
+        SimplePdfReportConfiguration reportCon;
+    }
+
+    public void exportAdvanceReport(HttpServletResponse response, List<IssuedBookDao> mainList, int count) throws JRException, IOException{
+        String path = "C:\\Users\\ajits\\Desktop\\tempReports";
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("reportName", "Issued Books");
+        parameters.put("countBooks", count);
+        
+        List<IssuedBookDao> IBooks = mainList;
+        File file = ResourceUtils.getFile("classpath:advanceReport.jrxml");
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(IBooks);
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfFile(jasperPrint,
+                "C:\\Users\\ajits\\Desktop\\tempReports\\advanceReport.pdf");
+        System.out.println("Report created...");
+        StringBuilder fileArg = new StringBuilder("attchment" + "; filename=");
+        fileArg.append("advanceReport.pdf");
 
         response.setContentType("application/x-download");
         response.addHeader("Content-Disposition", fileArg.toString());

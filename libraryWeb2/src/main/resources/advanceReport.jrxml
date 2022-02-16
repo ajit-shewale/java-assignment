@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="reportName" class="java.lang.String"/>
+	<parameter name="countBooks" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[select * from issued_books_table]]>
 	</queryString>
@@ -57,13 +58,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reportName}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="210" y="130" width="177" height="19" uuid="efe2903f-418c-4d10-a216-a54829f21c95"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="219" y="100" width="177" height="19" uuid="dc04c70b-551d-4fdc-a7df-3ae9707efea7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -71,6 +65,13 @@
 				</textElement>
 				<text><![CDATA[10 Days]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="218" y="130" width="177" height="19" uuid="25bd3a08-887c-435e-a75d-591d667a21ac"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{countBooks}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

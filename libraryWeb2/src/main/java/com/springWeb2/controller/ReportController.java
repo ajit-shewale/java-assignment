@@ -1,7 +1,9 @@
 package com.springWeb2.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springWeb2.entity.BookDao;
+import com.springWeb2.entity.IssuedBookDao;
+import com.springWeb2.service.IssuedServiceImpl;
 import com.springWeb2.service.ReportService;
 
 import net.sf.jasperreports.engine.JRException;
@@ -22,6 +26,9 @@ import net.sf.jasperreports.engine.JRException;
 @Controller
 public class ReportController {
  
+    @Autowired
+    private IssuedServiceImpl issuedServiceImpl;
+    
     @Autowired
     private ReportService reportService;
     
@@ -32,35 +39,34 @@ public class ReportController {
     }
     
     @GetMapping(value = "/reportInput")
-    public String reportInput(Model model) {
-        Date startDate1 = null ;
-        Date endDate1 = null;
-        model.addAttribute("startDate1",startDate1);
-        model.addAttribute("endDate1",endDate1);
+    public String reportInput(Model model) {  
+        IssuedBookDao book = new IssuedBookDao();
+        model.addAttribute("book", book);
         return "reportInput";
     }
     
     @PostMapping("/reportPage")
-    public String generateAdvanceReport(@ModelAttribute("startDate1") Date startDate1,@ModelAttribute("endDate1") Date endDate1,HttpServletResponse response) throws JRException, IOException  {
+    public String generateAdvanceReport(@ModelAttribute("book") IssuedBookDao book,HttpServletResponse response) throws JRException, IOException  {
        
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//        LocalDate startDate = LocalDate.parse(startDate1, formatter);
-//        LocalDate endDate = LocalDate.parse(endDate1, formatter);
+        LocalDate startDate  = book.getIssued_date();
+        LocalDate endDate = book.getReturn_date();
         
-//        List<IssuedBookDao> rowList = issuedServiceImpl.findAllBooks();
-//       List<IssuedBookDao> mainList = null;   // = new List<>();
-//       int count = 0;
-//        for(IssuedBookDao tempBook : rowList)
-//        {
-//          LocalDate  tempDate = tempBook.getIssued_date();
-//          int cmprStart = tempDate.compareTo(startDate);
-//          int cmprEnd = tempDate.compareTo(endDate);
-//           if(cmprStart >= 0 && cmprEnd <=0) {
-//               mainList.add(tempBook);
-//               count++;
-//           }
-//        }
-//        reportService.exportAdvanceReport(response,mainList,count);
+        System.out.println("all Okk.......");
+        
+        List<IssuedBookDao> rowList = issuedServiceImpl.findAllBooks();
+       List<IssuedBookDao> mainList = null;   // = new List<>();
+       int count = 0;
+        for(IssuedBookDao tempBook : rowList)
+        {
+          LocalDate  tempDate = tempBook.getIssued_date();
+          int cmprStart = tempDate.compareTo(startDate);
+          int cmprEnd = tempDate.compareTo(endDate);
+           if(cmprStart >= 0 && cmprEnd <=0) {
+               mainList.add(tempBook);
+               count++;
+           }
+        }
+        reportService.exportAdvanceReport(response,mainList,count);
        return "reportInput";
     }
     

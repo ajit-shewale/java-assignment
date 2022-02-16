@@ -24,11 +24,8 @@ import org.springframework.format.annotation.DateTimeFormat;
         private String author;
         @Column(name = "Cost")
         private double cost;
-        
-        @DateTimeFormat(pattern = "yyyy/MM/dd")
         @Column(name = "Issued_date")
         private LocalDate issued_date;
-        @DateTimeFormat(pattern = "yyyy/MM/dd")
         @Column(name = "Return_date")
         private LocalDate return_date;
         

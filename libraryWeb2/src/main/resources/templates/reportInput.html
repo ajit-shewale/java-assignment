@@ -12,7 +12,7 @@
 	<div class="container">
 		<h1>Report</h1>
 		<hr />
-		<form action="#" th:action="@{/reportPage}" th:object="${Date}"
+		<form action="#" th:action="@{/reportPage}" th:object="${book}"
 			method="POST">
 			
 			<!--  <label>Start Date</label>
@@ -21,10 +21,10 @@
 			  <input type="date" th:name="endDate"/> -->
 			
 			 <label>Start Date</label><input type="Date"
-				th:field="*{startDate1}"  class="form-control mb-4 col-4" />
+				th:field="*{issued_date}"  class="form-control mb-4 col-4" />
 
 			<label>End Date</label><input type="Date"
-				th:field="*{endDate1}"  class="form-control mb-4 col-4" /> 
+				th:field="*{return_date}"  class="form-control mb-4 col-4" /> 
 			<br />
 			<button type="submit" class="btn btn-info col-2">Download
 				Report</button>

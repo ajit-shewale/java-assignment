@@ -9,8 +9,8 @@
 	</queryString>
 	<field name="title" class="java.lang.String"/>
 	<field name="author" class="java.lang.String"/>
-	<field name="issued_date" class="java.time.LocalDate"/>
-	<field name="return_date" class="java.time.LocalDate"/>
+	<field name="issuedDate" class="java.time.LocalDate"/>
+	<field name="returnDate" class="java.time.LocalDate"/>
 	<variable name="Variable_1" class="java.lang.String">
 		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
 	</variable>
@@ -173,7 +173,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{issued_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{issuedDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="257" y="0" width="101" height="44" backcolor="#F5F7F7" uuid="dd6f6a4d-0d4d-4cea-b21e-291bfbd75edd">
@@ -185,7 +185,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{return_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{returnDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="358" y="1" width="101" height="44" backcolor="#F5F7F7" uuid="ab58f06d-ecbb-4eaa-bf6c-d02c3f021ea6">

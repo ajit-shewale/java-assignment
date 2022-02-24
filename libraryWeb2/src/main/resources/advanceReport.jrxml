@@ -5,13 +5,15 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="reportName" class="java.lang.String"/>
 	<parameter name="countBooks" class="java.lang.Integer"/>
+	<parameter name="startDate" class="java.lang.String"/>
+	<parameter name="endDate" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select * from issued_books_table]]>
 	</queryString>
 	<field name="title" class="java.lang.String"/>
 	<field name="author" class="java.lang.String"/>
-	<field name="issued_date" class="java.time.LocalDate"/>
-	<field name="return_date" class="java.time.LocalDate"/>
+	<field name="issuedDate" class="java.time.LocalDate"/>
+	<field name="returnDate" class="java.time.LocalDate"/>
 	<variable name="Variable_1" class="java.lang.String">
 		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
 	</variable>
@@ -58,13 +60,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reportName}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="219" y="100" width="177" height="19" uuid="dc04c70b-551d-4fdc-a7df-3ae9707efea7"/>
+			<textField>
+				<reportElement x="219" y="100" width="81" height="19" uuid="a70bfffa-8feb-43bd-b4d6-e854bbbd44ae"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="11"/>
 				</textElement>
-				<text><![CDATA[10 Days]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement x="218" y="130" width="177" height="19" uuid="25bd3a08-887c-435e-a75d-591d667a21ac"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -72,6 +74,20 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{countBooks}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="340" y="100" width="81" height="19" uuid="4bce0ccb-89dd-4dc1-b612-d051dd41b449"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="100" width="21" height="21" uuid="b4648c0d-b965-4ae9-9f62-f33542b2c3d3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[to]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>
@@ -174,7 +190,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{issued_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{issuedDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="257" y="0" width="101" height="44" backcolor="#F5F7F7" uuid="dd6f6a4d-0d4d-4cea-b21e-291bfbd75edd">
@@ -186,7 +202,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{return_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{returnDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Opaque" x="358" y="1" width="101" height="44" backcolor="#F5F7F7" uuid="ab58f06d-ecbb-4eaa-bf6c-d02c3f021ea6">

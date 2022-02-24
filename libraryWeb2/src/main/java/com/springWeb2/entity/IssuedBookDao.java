@@ -22,12 +22,12 @@ import org.springframework.format.annotation.DateTimeFormat;
         private String title;
         @Column(name = "Author")
         private String author;
-        @Column(name = "Cost")
+        @Column(name = "Cost") ///issuedD
         private double cost;
         @Column(name = "Issued_date")
-        private LocalDate issued_date;
+        private LocalDate issuedDate;
         @Column(name = "Return_date")
-        private LocalDate return_date;
+        private LocalDate returnDate;
         
         public IssuedBookDao() {
             super();
@@ -39,8 +39,8 @@ import org.springframework.format.annotation.DateTimeFormat;
             this.title = title;
             this.author = author;
             this.cost = cost;
-            this.issued_date = issued_date;
-            this.return_date = return_date;
+            this.issuedDate = issued_date;
+            this.returnDate = return_date;
         }
 
         public IssuedBookDao(int id2, String title2, String author2, double cost2) {
@@ -82,25 +82,25 @@ import org.springframework.format.annotation.DateTimeFormat;
             this.cost = cost;
         }
 
-        public LocalDate getIssued_date() {
-            return issued_date;
+        public LocalDate getIssuedDate() {
+            return issuedDate;
         }
 
-        public void setIssued_date(LocalDate issued_date) {
-            this.issued_date = issued_date;
+        public void setIssuedDate(LocalDate issued_date) {
+            this.issuedDate = issued_date;
         }
 
-        public LocalDate getReturn_date() {
-            return return_date;
+        public LocalDate getReturnDate() {
+            return returnDate;
         }
 
-        public void setReturn_date(LocalDate return_date) {
-            this.return_date = return_date;
+        public void setReturnDate(LocalDate return_date) {
+            this.returnDate = return_date;
         }
 
         @Override
         public String toString() {
             return "IssuedBookDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost
-                    + ", issued_date=" + issued_date + ", return_date=" + return_date + "]";
+                    + ", issued_date=" + issuedDate + ", return_date=" + returnDate + "]";
         }
     }

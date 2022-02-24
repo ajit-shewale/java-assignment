@@ -31,8 +31,8 @@
 					<td th:text="${book.title}"></td>
 					<td th:text="${book.author}"></td>
 					<td th:text="${book.cost}"></td>
-					<td th:text="${book.issued_date}"></td>
-					<td th:text="${book.return_date}"></td>
+					<td th:text="${book.issuedDate}"></td>
+					<td th:text="${book.returnDate}"></td>
 					<td align=center><a
                         th:href="@{/deleteIssuedBook/{id}(id=${book.id})}"
                         class="btn btn-danger">Return</a>

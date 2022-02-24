@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +37,9 @@ public class ReportService {
 
     @Autowired
     private IssuedRepository repository;
+    
+    @Autowired
+    private IssuedServiceImpl issuedServiceImpl;
 
     public void exportReport(HttpServletResponse response) throws JRException, IOException {
         String path = "C:\\Users\\ajits\\Desktop\\tempReports";
@@ -61,15 +67,33 @@ public class ReportService {
         SimplePdfReportConfiguration reportCon;
     }
 
-    public void exportAdvanceReport(HttpServletResponse response, List<IssuedBookDao> mainList, int count) throws JRException, IOException{
+    public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate,String reportName) throws JRException, IOException{
         String path = "C:\\Users\\ajits\\Desktop\\tempReports";
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("reportName", "Issued Books");
-        parameters.put("countBooks", count);
+       parameters.put("reportName", reportName);
+        parameters.put("endDate", endDate);
+        parameters.put("startDate", startDate);
         
-        List<IssuedBookDao> IBooks = mainList;
+      LocalDate start = LocalDate.parse(startDate);
+      LocalDate end = LocalDate.parse(endDate);
+      
+      List<IssuedBookDao> rowList = issuedServiceImpl.findAllBooks();
+      List<IssuedBookDao> mainList = new LinkedList<IssuedBookDao>();
+      
+      for(IssuedBookDao book:rowList) {
+          
+          LocalDate tempDate = book.getIssuedDate();
+          boolean check1 = tempDate.isAfter(start);
+          boolean check2 = tempDate.isBefore(end);
+          if(check1==true && check2==true) {
+               mainList.add(book);
+          }
+      }
+      int count = mainList.size();
+      parameters.put("countBooks", count);
+      
         File file = ResourceUtils.getFile("classpath:advanceReport.jrxml");
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(IBooks);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mainList);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         JasperExportManager.exportReportToPdfFile(jasperPrint,

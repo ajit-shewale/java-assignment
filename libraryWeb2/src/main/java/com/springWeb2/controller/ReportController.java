@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
 import com.springWeb2.entity.BookDao;
 import com.springWeb2.entity.IssuedBookDao;
@@ -50,7 +53,28 @@ public class ReportController {
             @RequestParam(value = "startDate") String startDate, @RequestParam(value = "endDate") String endDate,
             @RequestParam(value = "button") String field, HttpServletResponse response) throws JRException, IOException  {
        
-        reportService.exportAdvanceReport(response,startDate,endDate,reportName);
+        reportService.exportAdvanceReport(response,startDate,endDate,reportName,field);
+    }
+    
+    @GetMapping(value = "/CSVReport")
+    public void CSVReportInput(HttpServletResponse response)throws IOException {  
+       response.setContentType("text/csv");
+       String fileName = "issuedBooks.csv";
+       String headerKey = "Contenet-Disposition";
+       String headerValue = "attachment; fileName="+ fileName;
+       
+       response.setHeader(headerKey, headerValue);
+       List<IssuedBookDao> IBooks = issuedServiceImpl.findAllBooks();
+       ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
+       
+       String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
+       String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
+       csvWriter.writeHeader(csvHeader);
+       
+       for(IssuedBookDao book : IBooks) {
+           csvWriter.write(book,nameMapping);
+       }
+       csvWriter.close();
     }
     
 }

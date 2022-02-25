@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
 import com.springWeb2.entity.IssuedBookDao;
 import com.springWeb2.repository.IssuedRepository;
@@ -68,16 +71,11 @@ public class ReportService {
         SimplePdfReportConfiguration reportCon;
     }
 
-    public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate, String reportName)
-            throws JRException, IOException {
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("reportName", reportName);
-        parameters.put("endDate", endDate);
-        parameters.put("startDate", startDate);
+    public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate, String reportName,
+            String field) throws JRException, IOException {
 
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
-
         List<IssuedBookDao> rawList = issuedServiceImpl.findAllBooks();
         List<IssuedBookDao> mainList = new ArrayList<IssuedBookDao>();
 
@@ -88,22 +86,48 @@ public class ReportService {
             if (check1 >= 0) {
                 if (check2 <= 0) {
                     mainList.add(book);
-                    System.out.println(mainList);
                 }
             }
         }
 
-        int count = mainList.size();
-        parameters.put("countBooks", count);
+        if ("Download PDF Report".equals(field)) {
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("reportName", reportName);
+            parameters.put("endDate", endDate);
+            parameters.put("startDate", startDate);
+            int count = mainList.size();
+            parameters.put("countBooks", count);
 
-        File file = ResourceUtils.getFile("classpath:advanceReport.jrxml");
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mainList);
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        response.setContentType("application/x-pdf");
-        response.setHeader("Content-disposition", "inline; filename=" + reportName + ".pdf");
-        OutputStream outStream = response.getOutputStream();
-        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+            File file = ResourceUtils.getFile("classpath:advanceReport.jrxml");
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mainList);
+            JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+            response.setContentType("application/x-pdf");
+            response.setHeader("Content-disposition", "inline; filename=" + reportName + ".pdf");
+            OutputStream outStream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+        }
+        
+        if("Download CSV Report".equals(field))
+        {
+            response.setContentType("text/csv");
+            String fileName = reportName+".csv";
+            String headerKey = "Contenet-Disposition";
+            String headerValue = "attachment; fileName="+ fileName;
+            
+            response.setHeader(headerKey, headerValue);
+            ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
+            
+            String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
+            String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
+            csvWriter.writeHeader(csvHeader);
+            
+            for(IssuedBookDao book : mainList) {
+                csvWriter.write(book,nameMapping);
+            }
+            csvWriter.close();
+        }
 
     }
+
 }

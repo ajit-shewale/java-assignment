@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
         private String title;
         @Column(name = "Author")
         private String author;
-        @Column(name = "Cost") ///issuedD
+        @Column(name = "Cost") 
         private double cost;
         @Column(name = "Issued_date")
         private LocalDate issuedDate;
@@ -33,14 +33,14 @@ import org.springframework.format.annotation.DateTimeFormat;
             super();
         }
 
-        public IssuedBookDao(int id, String title, String author, double cost, LocalDate issued_date, LocalDate return_date) {
+        public IssuedBookDao(int id, String title, String author, double cost, LocalDate issuedDate, LocalDate returnDate) {
             super();
             this.id = id;
             this.title = title;
             this.author = author;
             this.cost = cost;
-            this.issuedDate = issued_date;
-            this.returnDate = return_date;
+            this.issuedDate = issuedDate;
+            this.returnDate = returnDate;
         }
 
         public IssuedBookDao(int id2, String title2, String author2, double cost2) {
@@ -86,21 +86,21 @@ import org.springframework.format.annotation.DateTimeFormat;
             return issuedDate;
         }
 
-        public void setIssuedDate(LocalDate issued_date) {
-            this.issuedDate = issued_date;
+        public void setIssuedDate(LocalDate issuedDate) {
+            this.issuedDate = issuedDate;
         }
 
         public LocalDate getReturnDate() {
             return returnDate;
         }
 
-        public void setReturnDate(LocalDate return_date) {
-            this.returnDate = return_date;
+        public void setReturnDate(LocalDate returnDate) {
+            this.returnDate = returnDate;
         }
 
         @Override
         public String toString() {
             return "IssuedBookDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost
-                    + ", issued_date=" + issuedDate + ", return_date=" + returnDate + "]";
+                    + ", issuedDate=" + issuedDate + ", returnDate=" + returnDate + "]";
         }
     }

@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class ReportService {
 
     @Autowired
     private IssuedRepository repository;
-    
+
     @Autowired
     private IssuedServiceImpl issuedServiceImpl;
 
@@ -67,48 +68,42 @@ public class ReportService {
         SimplePdfReportConfiguration reportCon;
     }
 
-    public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate,String reportName) throws JRException, IOException{
-        String path = "C:\\Users\\ajits\\Desktop\\tempReports";
+    public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate, String reportName)
+            throws JRException, IOException {
         Map<String, Object> parameters = new HashMap<>();
-       parameters.put("reportName", reportName);
+        parameters.put("reportName", reportName);
         parameters.put("endDate", endDate);
         parameters.put("startDate", startDate);
-        
-      LocalDate start = LocalDate.parse(startDate);
-      LocalDate end = LocalDate.parse(endDate);
-      
-      List<IssuedBookDao> rowList = issuedServiceImpl.findAllBooks();
-      List<IssuedBookDao> mainList = new LinkedList<IssuedBookDao>();
-      
-      for(IssuedBookDao book:rowList) {
-          
-          LocalDate tempDate = book.getIssuedDate();
-          boolean check1 = tempDate.isAfter(start);
-          boolean check2 = tempDate.isBefore(end);
-          if(check1==true && check2==true) {
-               mainList.add(book);
-          }
-      }
-      int count = mainList.size();
-      parameters.put("countBooks", count);
-      
+
+        LocalDate start = LocalDate.parse(startDate);
+        LocalDate end = LocalDate.parse(endDate);
+
+        List<IssuedBookDao> rawList = issuedServiceImpl.findAllBooks();
+        List<IssuedBookDao> mainList = new ArrayList<IssuedBookDao>();
+
+        for (IssuedBookDao book : rawList) {
+            LocalDate tempDate = book.getIssuedDate();
+            int check1 = tempDate.compareTo(start);
+            int check2 = tempDate.compareTo(end);
+            if (check1 >= 0) {
+                if (check2 <= 0) {
+                    mainList.add(book);
+                    System.out.println(mainList);
+                }
+            }
+        }
+
+        int count = mainList.size();
+        parameters.put("countBooks", count);
+
         File file = ResourceUtils.getFile("classpath:advanceReport.jrxml");
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(mainList);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "C:\\Users\\ajits\\Desktop\\tempReports\\advanceReport.pdf");
-        System.out.println("Report created...");
-        StringBuilder fileArg = new StringBuilder("attchment" + "; filename=");
-        fileArg.append("advanceReport.pdf");
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-disposition", "inline; filename=" + reportName + ".pdf");
+        OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 
-        response.setContentType("application/x-download");
-        response.addHeader("Content-Disposition", fileArg.toString());
-
-        JRPdfExporter exporter = new JRPdfExporter();
-        OutputStream out = response.getOutputStream();
-        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(out));
-        SimplePdfReportConfiguration reportCon;
     }
 }

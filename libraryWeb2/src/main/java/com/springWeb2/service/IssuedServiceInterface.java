@@ -9,7 +9,7 @@ import com.springWeb2.entity.IssuedBookDao;
 public interface IssuedServiceInterface {
 
 
-    List<IssuedBookDao> findAllBooks();
+    List<IssuedBookDao> findAllIssuedBooks();
 
     void saveBook(IssuedBookDao book);
 

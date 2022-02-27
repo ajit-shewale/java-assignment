@@ -76,7 +76,7 @@ public class ReportService {
 
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
-        List<IssuedBookDao> rawList = issuedServiceImpl.findAllBooks();
+        List<IssuedBookDao> rawList = issuedServiceImpl.findAllIssuedBooks();
         List<IssuedBookDao> mainList = new ArrayList<IssuedBookDao>();
 
         for (IssuedBookDao book : rawList) {

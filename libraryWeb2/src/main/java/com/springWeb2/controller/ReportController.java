@@ -64,7 +64,7 @@ public class ReportController {
        String headerValue = "attachment; fileName="+ fileName;
        
        response.setHeader(headerKey, headerValue);
-       List<IssuedBookDao> IBooks = issuedServiceImpl.findAllBooks();
+       List<IssuedBookDao> IBooks = issuedServiceImpl.findAllIssuedBooks();
        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
        
        String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};

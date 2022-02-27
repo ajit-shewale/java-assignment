@@ -15,7 +15,7 @@ public class IssuedServiceImpl implements IssuedServiceInterface {
     IssuedRepository IssuedRepo;
 
     @Override
-    public List<IssuedBookDao> findAllBooks() {
+    public List<IssuedBookDao> findAllIssuedBooks() {
         return IssuedRepo.findAll();
     }
 

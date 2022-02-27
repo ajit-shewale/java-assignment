@@ -40,9 +40,7 @@ public class IssuedController {
     @GetMapping("/addIssuedBook/{id}")
     public String addIssuedBook(@PathVariable int id) {
         BookDao book = libraryServiceImpl.getBookById(id);
-      
         LocalDate date = LocalDate.now();
-       
         IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),date ,date.plusDays(10));
         issuedServiceImpl.saveBook(Ibook);
         book.setStatus("Issued");
@@ -52,7 +50,7 @@ public class IssuedController {
 
     @GetMapping("/showIssuedBooks")
     public String showIssuedBooks(Model model) {
-        model.addAttribute("listBooks", issuedServiceImpl.findAllBooks());
+        model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooks());
         return "issued_books";
     }
 

@@ -61,6 +61,3 @@ public class RestfulController {
         return issuedServiceImpl.findAllIssuedBooks();
     }
 }
-
-    
-

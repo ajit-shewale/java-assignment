@@ -1,36 +1,31 @@
 package com.springWeb2.controller;
 
-import java.util.List;
-
-import javax.activation.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.springWeb2.entity.User;
 import com.springWeb2.entity.BookDao;
-import com.springWeb2.entity.IssuedBookDao;
 import com.springWeb2.service.LibraryServiceImpl;
+import com.springWeb2.service.UserDetailsServiceImpl;
 
 @Controller
 public class HomeController { 
 
     @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+    
+    @Autowired
     private LibraryServiceImpl libraryServiceImpl;
+    
+    @Autowired
+    private UserDetailsServiceImpl userDetailsServiceImpl;
 
     @GetMapping(value = "/")
     public String viewHomePage(Model model) {
@@ -81,5 +76,17 @@ public class HomeController {
         return "redirect:/";
     }
     
-   
+//    @GetMapping(value = "/newUser")
+//    public String addNewUser(Model model) {
+//       User user = new User();
+//        model.addAttribute("User", user);
+//        return "signinPage";
+//    }
+//    
+//    @PostMapping(value = "/saveUser")
+//    public String saveUser(@ModelAttribute("book") User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        userDetailsServiceImpl.saveUser(user);
+//        return "redirect:/";
+//    }
 }

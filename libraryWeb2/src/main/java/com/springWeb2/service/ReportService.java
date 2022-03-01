@@ -113,7 +113,7 @@ public class ReportService {
             response.setContentType("text/csv");
             String fileName = reportName+".csv";
             String headerKey = "Contenet-Disposition";
-            String headerValue = "attachment; fileName="+ fileName;
+            String headerValue = "attachment; fileName=" + fileName;
             
             response.setHeader(headerKey, headerValue);
             ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);

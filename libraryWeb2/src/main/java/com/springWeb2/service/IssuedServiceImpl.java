@@ -28,5 +28,10 @@ public class IssuedServiceImpl implements IssuedServiceInterface {
     public void deleteBook(int id) {
         IssuedRepo.deleteById(id);        
     }
+
+    @Override
+    public List<IssuedBookDao> findAllIssuedBooksIssuedBy(int userId) {
+        return IssuedRepo.findBooksByUserId(userId);
+    }
     
 }

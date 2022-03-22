@@ -10,6 +10,8 @@ public interface IssuedServiceInterface {
 
 
     List<IssuedBookDao> findAllIssuedBooks();
+    
+    List<IssuedBookDao> findAllIssuedBooksIssuedBy(int userId);
 
     void saveBook(IssuedBookDao book);
 

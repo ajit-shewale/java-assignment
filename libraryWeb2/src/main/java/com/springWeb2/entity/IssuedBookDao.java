@@ -28,7 +28,9 @@ import org.springframework.format.annotation.DateTimeFormat;
         private LocalDate issuedDate;
         @Column(name = "Return_date")
         private LocalDate returnDate;
-        
+        @Column(name="issuedBy")
+        private int issuedBy;
+
         public IssuedBookDao() {
             super();
         }
@@ -98,9 +100,18 @@ import org.springframework.format.annotation.DateTimeFormat;
             this.returnDate = returnDate;
         }
 
+        public int getIssuedBy() {
+            return issuedBy;
+        }
+
+        public void setIssuedBy(int issuedBy) {
+            this.issuedBy = issuedBy;
+        }
+
         @Override
         public String toString() {
             return "IssuedBookDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost
-                    + ", issuedDate=" + issuedDate + ", returnDate=" + returnDate + "]";
+                    + ", issuedDate=" + issuedDate + ", returnDate=" + returnDate + ", issuedBy=" + issuedBy + "]";
         }
+        
     }

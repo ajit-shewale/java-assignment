@@ -1,6 +1,9 @@
 package com.springWeb2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,21 +19,28 @@ import com.springWeb2.service.LibraryServiceImpl;
 import com.springWeb2.service.UserDetailsServiceImpl;
 
 @Controller
-public class HomeController { 
+public class HomeController {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Autowired
     private LibraryServiceImpl libraryServiceImpl;
-    
+
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/")
     public String viewHomePage(Model model) {
         model.addAttribute("booksList", libraryServiceImpl.findAllBooks());
-        return "index";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        boolean hasRole = authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ADMIN"));
+        if (hasRole) {
+            return "index_admin";
+        } else {
+            return "index_user";
+        }
     }
 
     @GetMapping(value = "/showNewBookForm")
@@ -62,7 +72,7 @@ public class HomeController {
         libraryServiceImpl.saveBook(book);
         return "redirect:/";
     }
-    
+
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable int id, Model model) {
         BookDao book = libraryServiceImpl.getBookById(id);
@@ -75,7 +85,7 @@ public class HomeController {
         this.libraryServiceImpl.deleteBook(id);
         return "redirect:/";
     }
-    
+
 //    @GetMapping(value = "/newUser")
 //    public String addNewUser(Model model) {
 //       User user = new User();

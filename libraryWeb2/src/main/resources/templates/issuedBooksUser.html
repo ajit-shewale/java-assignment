@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
+  
 	<div class="container 1">
 		<h1>Issued Books</h1><hr>
 		<table border="1" class="table table-striped table-responcive-md">
@@ -35,7 +35,7 @@
 					<td th:text="${book.returnDate}"></td>
 					<td align=center><a
                         th:href="@{/deleteIssuedBook/{id}(id=${book.id})}"
-                        class="btn btn-danger">Return</a>
+                        class="btn btn-danger">Return</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -44,6 +44,6 @@
         <a th:href="@{/report}"class="btn btn-primary">Generate Report</a>
          <a th:href="@{/reportInput}"class="btn btn-primary">Generate Advance Report</a>
          <a th:href="@{/CSVReport}"class="btn btn-primary">Generate CSV Report</a>
-	</div>
+	</div>  
 </body>
 </html>

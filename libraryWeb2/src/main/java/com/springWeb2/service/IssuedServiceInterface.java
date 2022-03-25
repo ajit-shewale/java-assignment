@@ -11,7 +11,7 @@ public interface IssuedServiceInterface {
 
     List<IssuedBookDao> findAllIssuedBooks();
     
-    List<IssuedBookDao> findAllIssuedBooksIssuedBy(int userId);
+    List<IssuedBookDao> findAllIssuedBooksIssuedBy(String userName);
 
     void saveBook(IssuedBookDao book);
 

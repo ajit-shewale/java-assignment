@@ -32,6 +32,15 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
     
+    
+    public User(Integer id, String username, String password, String role, boolean enabled) {
+        super();
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+    }
 
     public Integer getId() {
         return id;
@@ -71,6 +80,12 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", enabled="
+                + enabled + "]";
     }
 
 }

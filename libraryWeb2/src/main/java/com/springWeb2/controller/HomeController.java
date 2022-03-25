@@ -29,6 +29,9 @@ public class HomeController {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
+    
+    @Autowired
+    private IssueRequestController issueRequestController;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/")
@@ -86,6 +89,13 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/preRequest/{id}")
+    public String preRequest(@PathVariable int id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        issueRequestController.addIssueRequest(id,userName);
+        return "redirect:/";
+    }
 //    @GetMapping(value = "/newUser")
 //    public String addNewUser(Model model) {
 //       User user = new User();

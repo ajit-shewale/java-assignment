@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
     @Entity
-    @Table(name = "issued_books_table")
-    public class IssuedBookDao {
+    @Table(name = "issue_requests")
+    public class IssueRequestDao {
         @Id
         @Column(name = "Book_id")
         private int id;
@@ -24,34 +24,22 @@ import org.springframework.format.annotation.DateTimeFormat;
         private String author;
         @Column(name = "Cost") 
         private double cost;
-        @Column(name = "Issued_date")
-        private LocalDate issuedDate;
-        @Column(name = "Return_date")
-        private LocalDate returnDate;
         @Column(name="issuedfor")
         private String issuedFor;
-
-        public IssuedBookDao() {
+        
+        
+        public IssueRequestDao() {
             super();
+            // TODO Auto-generated constructor stub
         }
 
-        public IssuedBookDao(int id, String title, String author, double cost, LocalDate issuedDate,
-                LocalDate returnDate, String issuedFor) {
+        public IssueRequestDao(int id, String title, String author, double cost, String issuedFor) {
             super();
             this.id = id;
             this.title = title;
             this.author = author;
             this.cost = cost;
-            this.issuedDate = issuedDate;
-            this.returnDate = returnDate;
             this.issuedFor = issuedFor;
-        }
-
-        public IssuedBookDao(int id2, String title2, String author2, double cost2) {
-            this.id = id;
-            this.title = title;
-            this.author = author;
-            this.cost = cost;
         }
 
         public int getId() {
@@ -86,34 +74,18 @@ import org.springframework.format.annotation.DateTimeFormat;
             this.cost = cost;
         }
 
-        public LocalDate getIssuedDate() {
-            return issuedDate;
-        }
-
-        public void setIssuedDate(LocalDate issuedDate) {
-            this.issuedDate = issuedDate;
-        }
-
-        public LocalDate getReturnDate() {
-            return returnDate;
-        }
-
-        public void setReturnDate(LocalDate returnDate) {
-            this.returnDate = returnDate;
-        }
-
-        public String getissuedFor() {
+        public String getIssuedFor() {
             return issuedFor;
         }
 
-        public void setissuedFor(String issuedFor) {
+        public void setIssuedFor(String issuedFor) {
             this.issuedFor = issuedFor;
         }
 
         @Override
         public String toString() {
-            return "IssuedBookDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost
-                    + ", issuedDate=" + issuedDate + ", returnDate=" + returnDate + ", issuedFor=" + issuedFor + "]";
+            return "IssueRequestDao [id=" + id + ", title=" + title + ", author=" + author + ", cost=" + cost
+                    + ", issuedFor=" + issuedFor + "]";
         }
-        
+
     }

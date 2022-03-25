@@ -51,29 +51,29 @@ public class IssuedController {
        //
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-//        User user = userRepository.getUserByUsername2(userName);
-//        int userId = user.getId();
-        int userId = userRepository.getUserIdByUsername(userName);
         //
         BookDao book = libraryServiceImpl.getBookById(id);
         LocalDate date = LocalDate.now();
-        IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),date ,date.plusDays(10));
-        Ibook.setIssuedBy(userId);
+        IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),date ,date.plusDays(10),userName);
         issuedServiceImpl.saveBook(Ibook);
-        book.setStatus("Issued");
+        book.setStatus("Pending..");
         libraryServiceImpl.saveBook(book);
         return "redirect:/";
     }
 
     @GetMapping("/showIssuedBooks")
     public String showIssuedBooks(Model model) {
-       // model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooks());
+//        model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooks());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        User user = userRepository.getUserByUsername(userName);
-        int userId = user.getId();
-        model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooksIssuedBy(userId));
-        return "issued_books";
+        model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooksIssuedBy(userName));
+        return "issuedBooksUser";
+    }
+    
+    @GetMapping("/showAllIssuedBooks")
+    public String showAllIssuedBooks(Model model) {
+        model.addAttribute("listBooks", issuedServiceImpl.findAllIssuedBooks());
+        return "issuedBooksAdmin";
     }
 
     @GetMapping("/deleteIssuedBook/{id}")

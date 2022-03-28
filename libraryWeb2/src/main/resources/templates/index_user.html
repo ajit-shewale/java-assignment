@@ -16,12 +16,13 @@
 <body>
 
 	<div class="container my-2">
-		<br>
-		<a th:href="@{/showSearchBookForm}"
+		<br> <a th:href="@{/showSearchBookForm}"
 			class="btn btn-primary btn-sm mb-3">Search</a> <a
 			th:href="@{/showIssuedBooks}" class="btn btn-primary btn-sm mb-3">Issued
 			Books</a> <a th:href="@{/logout}" class="btn btn-danger btn-sm mb-3">Log
 			Out</a>
+		<h4 align=right th:text="${userName}">user name</h4>
+		<h5 align=right>Role:USER</h5>
 		<h1 align=center>Library Management System</h1>
 		<hr>
 		<table border="1" class="table table-striped table-responcive-md">

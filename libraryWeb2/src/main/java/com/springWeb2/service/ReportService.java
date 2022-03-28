@@ -15,6 +15,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.supercsv.io.CsvBeanWriter;
@@ -45,38 +47,65 @@ public class ReportService {
     @Autowired
     private IssuedServiceImpl issuedServiceImpl;
 
+   public List<IssuedBookDao> booksByRole() {
+       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       boolean hasRole = authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ADMIN"));
+       if (hasRole) {
+          List<IssuedBookDao> IBooks = issuedServiceImpl.findAllIssuedBooks();
+          return IBooks;
+       } else {
+           String userName = authentication.getName();
+           List<IssuedBookDao> IBooks = issuedServiceImpl.findAllIssuedBooksIssuedBy(userName);
+           return IBooks;
+       }
+       
+   }
+    
     public void exportReport(HttpServletResponse response) throws JRException, IOException {
         String path = "C:\\Users\\ajits\\Desktop\\tempReports";
+        List<IssuedBookDao> IBooks = booksByRole();
+        int count = IBooks.size();
+        
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("reportName", "Issued Books");
-
-        List<IssuedBookDao> IBooks = repository.findAll();
+        parameters.put("countBooks", count);
         File file = ResourceUtils.getFile("classpath:reportDemo.jrxml");
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(IBooks);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "C:\\Users\\ajits\\Desktop\\tempReports\\reportDemo.pdf");
-        System.out.println("Report created...");
-        StringBuilder fileArg = new StringBuilder("attchment" + "; filename=");
-        fileArg.append("reportDemo.pdf");
-
-        response.setContentType("application/x-download");
-        response.addHeader("Content-Disposition", fileArg.toString());
-
-        JRPdfExporter exporter = new JRPdfExporter();
-        OutputStream out = response.getOutputStream();
-        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(out));
-        SimplePdfReportConfiguration reportCon;
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-disposition", "inline; filename="+ "reportDemo.pdf");
+        OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+        
     }
 
+    public void CSVReportInput(HttpServletResponse response)throws IOException {  
+        response.setContentType("text/csv");
+        String fileName = "issuedBooks.csv";
+        String headerKey = "Contenet-Disposition";
+        String headerValue = "attachment; fileName="+ fileName;
+        
+        response.setHeader(headerKey, headerValue);
+        List<IssuedBookDao> IBooks = booksByRole();
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
+        
+        String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
+        String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
+        csvWriter.writeHeader(csvHeader);
+        
+        for(IssuedBookDao book : IBooks) {
+            csvWriter.write(book,nameMapping);
+        }
+        csvWriter.close();
+     }
+    
     public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate, String reportName,
             String field) throws JRException, IOException {
 
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
-        List<IssuedBookDao> rawList = issuedServiceImpl.findAllIssuedBooks();
+        List<IssuedBookDao> rawList =booksByRole();
         List<IssuedBookDao> mainList = new ArrayList<IssuedBookDao>();
 
         for (IssuedBookDao book : rawList) {

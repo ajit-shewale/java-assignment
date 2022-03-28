@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="reportName" class="java.lang.String"/>
+	<parameter name="countBooks" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[select * from issued_books_table]]>
 	</queryString>
@@ -11,6 +12,7 @@
 	<field name="author" class="java.lang.String"/>
 	<field name="issuedDate" class="java.time.LocalDate"/>
 	<field name="returnDate" class="java.time.LocalDate"/>
+	<field name="issuedFor" class="java.lang.String"/>
 	<variable name="Variable_1" class="java.lang.String">
 		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
 	</variable>
@@ -57,13 +59,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reportName}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="210" y="130" width="177" height="19" uuid="efe2903f-418c-4d10-a216-a54829f21c95"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="219" y="100" width="177" height="19" uuid="dc04c70b-551d-4fdc-a7df-3ae9707efea7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -71,6 +66,13 @@
 				</textElement>
 				<text><![CDATA[10 Days]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="220" y="130" width="177" height="19" uuid="9048e099-a57a-4af6-8c10-cb58c9ac28a7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{countBooks}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
@@ -188,7 +190,7 @@
 				<textFieldExpression><![CDATA[$F{returnDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Opaque" x="358" y="1" width="101" height="44" backcolor="#F5F7F7" uuid="ab58f06d-ecbb-4eaa-bf6c-d02c3f021ea6">
+				<reportElement mode="Opaque" x="358" y="0" width="101" height="44" backcolor="#F5F7F7" uuid="911bf1dd-b97e-42e8-a134-7ef1ebb2e538">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8ce199a-3676-4a61-bc1f-79d1ccffee6b"/>
 				</reportElement>
 				<box>
@@ -197,6 +199,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{issuedFor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

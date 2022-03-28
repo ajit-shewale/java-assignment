@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,53 +30,39 @@ import net.sf.jasperreports.engine.JRException;
 
 @Controller
 public class ReportController {
- 
+
     @Autowired
     private IssuedServiceImpl issuedServiceImpl;
-    
+
     @Autowired
     private ReportService reportService;
-    
+
     @GetMapping("/report")
-    public void generateReport(HttpServletResponse response ) throws JRException, IOException {
-        
+    public void generateReport(HttpServletResponse response) throws JRException, IOException {
+
         reportService.exportReport(response);
     }
-    
+
     @GetMapping(value = "/reportInput")
-    public String reportInput(Model model) {  
+    public String reportInput(Model model) {
         IssuedBookDao book = new IssuedBookDao();
         model.addAttribute("book", book);
         return "reportInput";
     }
-    
+
     @PostMapping("/reportPage")
     public void generateAdvanceReport(@RequestParam(value = "reportName") String reportName,
             @RequestParam(value = "startDate") String startDate, @RequestParam(value = "endDate") String endDate,
-            @RequestParam(value = "button") String field, HttpServletResponse response) throws JRException, IOException  {
-       
-        reportService.exportAdvanceReport(response,startDate,endDate,reportName,field);
+            @RequestParam(value = "button") String field, HttpServletResponse response)
+            throws JRException, IOException {
+
+        reportService.exportAdvanceReport(response, startDate, endDate, reportName, field);
     }
-    
+
     @GetMapping(value = "/CSVReport")
-    public void CSVReportInput(HttpServletResponse response)throws IOException {  
-       response.setContentType("text/csv");
-       String fileName = "issuedBooks.csv";
-       String headerKey = "Contenet-Disposition";
-       String headerValue = "attachment; fileName="+ fileName;
-       
-       response.setHeader(headerKey, headerValue);
-       List<IssuedBookDao> IBooks = issuedServiceImpl.findAllIssuedBooks();
-       ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
-       
-       String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
-       String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
-       csvWriter.writeHeader(csvHeader);
-       
-       for(IssuedBookDao book : IBooks) {
-           csvWriter.write(book,nameMapping);
-       }
-       csvWriter.close();
+    public void generateCSVReport(HttpServletResponse response) throws JRException, IOException {
+
+        reportService.CSVReportInput(response);
     }
-    
+
 }

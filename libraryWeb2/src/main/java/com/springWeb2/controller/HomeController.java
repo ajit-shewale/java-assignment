@@ -33,11 +33,12 @@ public class HomeController {
     @Autowired
     private IssueRequestController issueRequestController;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/")
     public String viewHomePage(Model model) {
         model.addAttribute("booksList", libraryServiceImpl.findAllBooks());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        model.addAttribute("userName", userName);
         boolean hasRole = authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ADMIN"));
         if (hasRole) {
             return "index_admin";

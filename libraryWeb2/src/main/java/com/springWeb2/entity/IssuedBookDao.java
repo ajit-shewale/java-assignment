@@ -102,11 +102,11 @@ import org.springframework.format.annotation.DateTimeFormat;
             this.returnDate = returnDate;
         }
 
-        public String getissuedFor() {
+        public String getIssuedFor() {
             return issuedFor;
         }
 
-        public void setissuedFor(String issuedFor) {
+        public void setIssuedFor(String issuedFor) {
             this.issuedFor = issuedFor;
         }
 

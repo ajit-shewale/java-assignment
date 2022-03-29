@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+  <head>
+    <title tiles:fragment="title">Logout</title>
+  </head>
+  <body>
+    <div tiles:fragment="content" align="center">
+        <h1>Are you sure you want to log out? </h1>
+         <a th:href="@{/login}" class="btn btn-danger btn-sm mb-3">Log
+            Out</a>
+    </div>
+  </body>
+</html>

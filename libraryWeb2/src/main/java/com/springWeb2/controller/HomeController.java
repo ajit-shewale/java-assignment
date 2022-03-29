@@ -1,3 +1,4 @@
+
 package com.springWeb2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,6 @@ import com.springWeb2.service.UserDetailsServiceImpl;
 
 @Controller
 public class HomeController {
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private LibraryServiceImpl libraryServiceImpl;
@@ -97,17 +95,4 @@ public class HomeController {
         issueRequestController.addIssueRequest(id,userName);
         return "redirect:/";
     }
-//    @GetMapping(value = "/newUser")
-//    public String addNewUser(Model model) {
-//       User user = new User();
-//        model.addAttribute("User", user);
-//        return "signinPage";
-//    }
-//    
-//    @PostMapping(value = "/saveUser")
-//    public String saveUser(@ModelAttribute("book") User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        userDetailsServiceImpl.saveUser(user);
-//        return "redirect:/";
-//    }
 }

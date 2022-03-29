@@ -23,7 +23,7 @@ public class User {
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "userName")
+    @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;
@@ -33,6 +33,11 @@ public class User {
     private boolean enabled;
     
     
+    public User() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
     public User(Integer id, String username, String password, String role, boolean enabled) {
         super();
         this.id = id;

@@ -53,18 +53,21 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        //.antMatchers("/").hasAnyAuthority("ADMIN", "USER")
-//        .antMatchers("/").permitAll()
         .antMatchers("/showSearchBookForm").permitAll()
+        .antMatchers("/newUserForm").permitAll()
+        .antMatchers("/saveUser").permitAll()
         
         .antMatchers("/index_user","/showIssuedBooks/**","/addIssuedBook/**").hasAuthority("USER")
         .antMatchers("/index_admin","/showNewBookForm","/showFormForUpdate/**","/deleteBook/**").hasAuthority("ADMIN")
         .anyRequest()
             .authenticated()
             .and()
-            .formLogin().permitAll()
+//            .formLogin().permitAll()
+            .formLogin().loginPage("/login").permitAll()
             .and()
-            .logout().permitAll().and().exceptionHandling().accessDeniedPage("/403");     
+//            .logout().permitAll()
+            .logout().logoutUrl("/logout").permitAll()
+            .and().exceptionHandling().accessDeniedPage("/403");     
     }
     
     

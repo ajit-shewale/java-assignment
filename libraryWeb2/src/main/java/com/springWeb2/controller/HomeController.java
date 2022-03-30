@@ -1,6 +1,10 @@
 
 package com.springWeb2.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springWeb2.entity.User;
+import com.springWeb2.helper.Message;
 import com.springWeb2.entity.BookDao;
 import com.springWeb2.service.LibraryServiceImpl;
 import com.springWeb2.service.UserDetailsServiceImpl;
@@ -30,9 +35,12 @@ public class HomeController {
     
     @Autowired
     private IssueRequestController issueRequestController;
+    
+    @Autowired
+    private IssuedController issuedController;
 
     @GetMapping(value = "/")
-    public String viewHomePage(Model model) {
+    public String viewHomePage(Model model,HttpSession session) {
         model.addAttribute("booksList", libraryServiceImpl.findAllBooks());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
@@ -41,6 +49,9 @@ public class HomeController {
         if (hasRole) {
             return "index_admin";
         } else {
+            // a method->return list of books which have deadline in 3 days.
+            String DeadBooks = issuedController.deadlineBooks();
+            session.setAttribute("message", new Message("Deadline is near for these books: "+DeadBooks,"danger"));
             return "index_user";
         }
     }

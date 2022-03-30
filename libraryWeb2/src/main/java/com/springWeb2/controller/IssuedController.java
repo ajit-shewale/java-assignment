@@ -2,8 +2,10 @@ package com.springWeb2.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -79,11 +81,30 @@ public class IssuedController {
     @GetMapping("/deleteIssuedBook/{id}")
     public String deleteIssuedBook(@PathVariable(value = "id") int id) {
         BookDao book = libraryServiceImpl.getBookById(id);
+        book.setQuantity(book.getQuantity()+1);
         book.setStatus("not issued");
         libraryServiceImpl.saveBook(book);
         this.issuedServiceImpl.deleteBook(id);
         return "redirect:/showIssuedBooks";
     }
     
+    public String deadlineBooks() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+         List<IssuedBookDao> rawList = issuedServiceImpl.findAllIssuedBooksIssuedBy(userName);
+         List<String> mainList = new ArrayList<String>();
+
+         for (IssuedBookDao book : rawList) {
+             LocalDate returnDate = book.getReturnDate();
+             LocalDate todaysDate= LocalDate.now();
+             long daysBetween = ChronoUnit.DAYS.between(todaysDate,returnDate);
+             if(daysBetween<=3)
+             {
+                 mainList.add(book.getTitle());
+             }
+         }
+        String bookList = mainList.toString();
+        return bookList;
+    }
    
 }

@@ -1,6 +1,7 @@
 package com.springWeb2.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,10 +32,12 @@ public class IssueRequestController {
     
     public String addIssueRequest(int id,String userName) {
         BookDao book = libraryServiceImpl.getBookById(id);
+        if(book.getQuantity()!=0) {
         IssueRequestDao request = new IssueRequestDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),userName);
         issueRequestServiceImpl.saveRequest(request);
         book.setStatus("Pending..");
         libraryServiceImpl.saveBook(book);
+        }
         return "redirect:/";
     }
     
@@ -51,9 +54,11 @@ public class IssueRequestController {
         LocalDate date = LocalDate.now();
         IssuedBookDao Ibook = new IssuedBookDao(book.getId(), book.getTitle(), book.getAuthor(), book.getCost(),date ,date.plusDays(10),request.getIssuedFor());
         issuedServiceImpl.saveBook(Ibook);
+        book.setQuantity(book.getQuantity()-1);
         book.setStatus("issued");
         libraryServiceImpl.saveBook(book);
         this.issueRequestServiceImpl.deleteRequest(id);
         return "redirect:/showAllIssueRequests";
     }
+
 }

@@ -12,22 +12,34 @@
 	<div class="container">
 		<h1>Report</h1>
 		<hr />
-		<form action="#" th:action="@{/reportPage}" 
-			method="POST">
-			
+		<form action="#" th:action="@{/generateReport}" method="POST">
+
 			<label>Report Name</label><input type="text" name="reportName"
-                class="form-control mb-4 col-4" />
-                 <label>Start Date</label> <input
-                type="date" name="startDate" class="form-control mb-4 col-4" />
-                 <label>End
-                Date</label><input type="date" name="endDate"
-                class="form-control mb-4 col-4" /> <br />
-			<br />
-			<input class="btn btn-success" type="submit" name="button" value="Download PDF Report" />
-		<input class="btn btn-success" type="submit" name="button" value="Download CSV Report" />
+				class="form-control mb-4 col-4" />
+
+			 <input type="radio" 
+					 value="AllBooks" name="reportType" class="form-control mb-4 col-4"/>All books</lable>
+				<lable> <input type="radio" 
+					 value="Custom" name="reportType" class="form-control mb-4 col-4"/>Custom</lable>
+		
+           <!--
+			 <td><span th:if="${reportType == 'A'}">AllBooks</span> <span
+				th:unless="${reportType == 'C'}">Custom</span></td>
+             -->
+			<div>
+				<label>Start Date</label> <input type="date" name="startDate"
+					class="form-control mb-4 col-4" /> <label>End Date</label><input
+					type="date" name="endDate" class="form-control mb-4 col-4" /> <br />
+			</div>
+
+			<br /> <input class="btn btn-success" type="submit" name="button"
+				value="Download PDF Report" /> <input class="btn btn-success"
+				type="submit" name="button" value="Download CSV Report" />
 		</form>
 		<hr />
 		<a th:href="@{/}">Back to Library</a>
 	</div>
+
+
 </body>
 </html>

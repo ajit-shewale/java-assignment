@@ -15,6 +15,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -61,45 +62,46 @@ public class ReportService {
        
    }
     
-    public void exportReport(HttpServletResponse response) throws JRException, IOException {
+    public void exportReport(HttpServletResponse response ,String reportName,
+            String field) throws JRException, IOException {
+        
+        if(("Download PDF Report".equals(field))) {
         String path = "C:\\Users\\ajits\\Desktop\\tempReports";
         List<IssuedBookDao> IBooks = booksByRole();
         int count = IBooks.size();
         
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("reportName", "Issued Books");
+        parameters.put("reportName", reportName);
         parameters.put("countBooks", count);
         File file = ResourceUtils.getFile("classpath:reportDemo.jrxml");
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(IBooks);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         response.setContentType("application/x-pdf");
-        response.setHeader("Content-disposition", "inline; filename="+ "reportDemo.pdf");
+        response.setHeader("Content-disposition", "inline; filename=" + reportName + ".pdf");
         OutputStream outStream = response.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+        }
+         if("Download CSV Report".equals(field)){
+             response.setContentType("text/csv");
+             String fileName = reportName.concat(".csv");
+             
+             response.setHeader(HttpHeaders.CONTENT_DISPOSITION,  "attachment; filename=\"" + fileName + "\"");
+             List<IssuedBookDao> IBooks = booksByRole();
+             ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
+             
+             String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
+             String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
+             csvWriter.writeHeader(csvHeader);
+             
+             for(IssuedBookDao book : IBooks) {
+                 csvWriter.write(book,nameMapping);
+             }
+             csvWriter.close();
+         }
         
     }
 
-    public void CSVReportInput(HttpServletResponse response)throws IOException {  
-        response.setContentType("text/csv");
-        String fileName = "issuedBooks.csv";
-        String headerKey = "Contenet-Disposition";
-        String headerValue = "attachment; fileName="+ fileName;
-        
-        response.setHeader(headerKey, headerValue);
-        List<IssuedBookDao> IBooks = booksByRole();
-        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
-        
-        String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};
-        String[] nameMapping = {"id","title","author","cost","issuedDate","returnDate"};
-        csvWriter.writeHeader(csvHeader);
-        
-        for(IssuedBookDao book : IBooks) {
-            csvWriter.write(book,nameMapping);
-        }
-        csvWriter.close();
-     }
-    
     public void exportAdvanceReport(HttpServletResponse response, String startDate, String endDate, String reportName,
             String field) throws JRException, IOException {
 
@@ -140,11 +142,9 @@ public class ReportService {
         if("Download CSV Report".equals(field))
         {
             response.setContentType("text/csv");
-            String fileName = reportName+".csv";
-            String headerKey = "Contenet-Disposition";
-            String headerValue = "attachment; fileName=" + fileName;
-            
-            response.setHeader(headerKey, headerValue);
+            String fileName =reportName.concat(".csv");  
+        
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"");
             ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),CsvPreference.STANDARD_PREFERENCE);
             
             String[] csvHeader = {"Book Id","Title","Author","Cost","IssuedDate","ReturnDate"};

@@ -37,11 +37,6 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    @GetMapping("/report")
-    public void generateReport(HttpServletResponse response) throws JRException, IOException {
-
-        reportService.exportReport(response);
-    }
 
     @GetMapping(value = "/reportInput")
     public String reportInput(Model model) {
@@ -50,19 +45,15 @@ public class ReportController {
         return "reportInput";
     }
 
-    @PostMapping("/reportPage")
+    @PostMapping("/generateReport")
     public void generateAdvanceReport(@RequestParam(value = "reportName") String reportName,
-            @RequestParam(value = "startDate") String startDate, @RequestParam(value = "endDate") String endDate,
-            @RequestParam(value = "button") String field, HttpServletResponse response)
-            throws JRException, IOException {
-
-        reportService.exportAdvanceReport(response, startDate, endDate, reportName, field);
-    }
-
-    @GetMapping(value = "/CSVReport")
-    public void generateCSVReport(HttpServletResponse response) throws JRException, IOException {
-
-        reportService.CSVReportInput(response);
+            @RequestParam(value = "reportType") String reportType, @RequestParam(value = "startDate") String startDate,
+            @RequestParam(value = "endDate") String endDate, @RequestParam(value = "button") String field,
+            HttpServletResponse response) throws JRException, IOException {
+        if ("AllBooks".equals(reportType)) {
+            reportService.exportReport(response, reportName, field);
+        } else if ("Custom".equals(reportType)) 
+            reportService.exportAdvanceReport(response, startDate, endDate, reportName, field);
     }
 
 }

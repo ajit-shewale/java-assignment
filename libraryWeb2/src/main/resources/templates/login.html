@@ -13,14 +13,11 @@
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group">
-            <span th:text="${message}"></span>
             <input name="username" type="text" class="form-control" placeholder="Username"
                    autofocus="true"/>
             <br>
             <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span class="has-error" th:text="${error}"></span>
             
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                <br> 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
             <h4 class="text-center"><a href="/newUserForm">Create an account</a></h4>

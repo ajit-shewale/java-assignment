@@ -14,6 +14,7 @@
 	<field name="author" class="java.lang.String"/>
 	<field name="issuedDate" class="java.time.LocalDate"/>
 	<field name="returnDate" class="java.time.LocalDate"/>
+	<field name="issuedFor" class="java.lang.String"/>
 	<variable name="Variable_1" class="java.lang.String">
 		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
 	</variable>
@@ -79,7 +80,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{endDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="310" y="100" width="21" height="21" uuid="b4648c0d-b965-4ae9-9f62-f33542b2c3d3"/>
@@ -205,7 +206,7 @@
 				<textFieldExpression><![CDATA[$F{returnDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Opaque" x="358" y="0" width="101" height="44" backcolor="#F5F7F7" uuid="ab58f06d-ecbb-4eaa-bf6c-d02c3f021ea6">
+				<reportElement mode="Opaque" x="358" y="0" width="101" height="44" backcolor="#F5F7F7" uuid="d7feaa0a-6ef7-4384-a93a-8f067b4e393b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8ce199a-3676-4a61-bc1f-79d1ccffee6b"/>
 				</reportElement>
 				<box>
@@ -214,6 +215,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="7"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{issuedFor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

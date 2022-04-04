@@ -7,7 +7,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous" />
-</head>
+	
+	<script th:src="@{javaScript/myJs.js}" >
+    </script>
+	
+</head>	
 <body>
 	<div class="container">
 		<h1>Report</h1>
@@ -15,18 +19,13 @@
 		<form action="#" th:action="@{/generateReport}" method="POST">
 
 			<label>Report Name</label><input type="text" name="reportName"
-				class="form-control mb-4 col-4" />
-
-			 <input type="radio" 
-					 value="AllBooks" name="reportType" class="form-control mb-4 col-4"/>All books</lable>
-				<lable> <input type="radio" 
-					 value="Custom" name="reportType" class="form-control mb-4 col-4"/>Custom</lable>
-		
-           <!--
-			 <td><span th:if="${reportType == 'A'}">AllBooks</span> <span
-				th:unless="${reportType == 'C'}">Custom</span></td>
-             -->
-			<div>
+				class="form-control mb-4 col-4" /> <br> 
+				<input type="radio"
+				value="AllBooks" name="reportType" onclick="hideShowDiv(1)" />All books
+			</lable>
+			<lable> <input type="radio" value="Custom" name="reportType" onclick="hideShowDiv(2)" />Custom</lable>
+			<br>
+			<div id="div">
 				<label>Start Date</label> <input type="date" name="startDate"
 					class="form-control mb-4 col-4" /> <label>End Date</label><input
 					type="date" name="endDate" class="form-control mb-4 col-4" /> <br />
@@ -39,7 +38,5 @@
 		<hr />
 		<a th:href="@{/}">Back to Library</a>
 	</div>
-
-
 </body>
 </html>

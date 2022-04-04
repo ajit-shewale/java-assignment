@@ -39,9 +39,7 @@ public class ReportController {
 
 
     @GetMapping(value = "/reportInput")
-    public String reportInput(Model model) {
-        IssuedBookDao book = new IssuedBookDao();
-        model.addAttribute("book", book);
+    public String reportInput() {
         return "reportInput";
     }
 
